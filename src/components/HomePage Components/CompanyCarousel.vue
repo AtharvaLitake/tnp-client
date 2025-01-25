@@ -1,13 +1,13 @@
 <template>
-    <v-container class="px-15">
+    <v-container class="px-15 px-xs-0">
         <h1 class="text-h5 font-weight-bold text-primary">Top Recruiters</h1>
-        <v-carousel height="auto" show-arrows="hover" cycle hide-delimiter-background class="pl-5">
+        <v-carousel height="auto" show-arrows="hover" cycle hide-delimiter-background>
             <v-carousel-item>
                 <v-row no-gutters>
                     <v-col v-for="company in companies" :key="company.id" cols="6" sm="4" lg="3"
                         class="d-flex justify-center">
                         <!-- Apply width and height explicitly -->
-                        <v-img :src="company.url" width="100"></v-img>
+                        <v-img :src="company.url"></v-img>
                     </v-col>
                 </v-row>
             </v-carousel-item>
