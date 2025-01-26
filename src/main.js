@@ -1,10 +1,23 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import vuetify from './plugins/vuetify'
-import { loadFonts } from './plugins/webfontloader'
+import { createApp } from "vue";
+import App from "./App.vue";
+import vuetify from "./plugins/vuetify";
+import { loadFonts } from "./plugins/webfontloader";
+//router imports
+import { createRouter, createWebHistory } from "vue-router";
+//componennt imports
+import HomePage from "./components/HomePage.vue";
+import HelpSupport from './components/HelpSupport/HelpSupport.vue'
+//router setup
+const routes = [
+  { path: "/", name: "Home", component: HomePage },
+  { path:"/help",name:"Help", component:HelpSupport}
+];
 
-loadFonts()
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 
-createApp(App)
-  .use(vuetify)
-  .mount('#app')
+loadFonts();
+
+createApp(App).use(vuetify).use(router).mount("#app");

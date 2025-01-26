@@ -1,6 +1,6 @@
 <template>
     <v-container class="px-15 px-xs-0">
-        <h1 class="text-h5 font-weight-bold text-primary">Top Recruiters</h1>
+        <h1 class="text-h5 font-weight-bold text-primary mb-5">Top Recruiters</h1>
         <v-carousel height="auto" show-arrows="hover" cycle hide-delimiter-background>
             <v-carousel-item>
                 <v-row no-gutters>
