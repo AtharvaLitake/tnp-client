@@ -5,10 +5,6 @@
 </template>
 
 <script>
-import NavBar from "./BaseComponents/NavBar.vue"
 export default {
-   components:{
-    NavBar
-   }
 }
 </script>
