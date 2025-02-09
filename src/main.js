@@ -12,6 +12,7 @@ import WaitPage from "./components/WaitPage.vue"
 import LoginPage from './components/LoginPage.vue'
 import CheckApplication from "./components/CheckApplication.vue";
 import GetNotifications from "./components/GetNotifications.vue";
+import RegisterPage from "./components/RegisterPage.vue";
 //router setup
 const routes = [
   { path: "/", name: "Home", component: HomePage },
@@ -20,7 +21,8 @@ const routes = [
   { path:"/wait",name:"Wait",component:WaitPage},
   {path:"/login",name:"Login",component:LoginPage},
   {path:"/applications",name:"Application",component:CheckApplication},
-  {path:"/notifications",name:"Notification",component:GetNotifications}
+  {path:"/notifications",name:"Notification",component:GetNotifications},
+  {path:"/register",name:"Register",component:RegisterPage}
 ];
 
 const router = createRouter({
