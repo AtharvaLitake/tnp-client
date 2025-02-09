@@ -11,10 +11,11 @@
   
       <!-- Desktop Navigation -->
       <template v-if="$vuetify.display.mdAndUp">
-        <v-btn text class="nav-link" to="/home">HOME</v-btn>
-        <v-btn text class="nav-link" to="/about">JOBS</v-btn>
-        <v-btn text class="nav-link" to="/jobs">APPLICATIONS</v-btn>
+        <v-btn text class="nav-link" to="/">HOME</v-btn>
+        <v-btn text class="nav-link" to="/jobs">JOBS</v-btn>
+        <v-btn text class="nav-link" to="/applications">APPLICATIONS</v-btn>
         <v-btn text class="nav-link" to="/profile">PROFILE</v-btn>
+        <v-btn text class="nav-link" to="/help">HELP</v-btn>
       </template>
   
       <!-- Login Button -->
@@ -23,7 +24,7 @@
   
       <!-- Notification Bell -->
       <div style="padding-right: 36px; margin-left: -20px;">
-  <v-btn icon>
+  <v-btn icon to="/notifications">
     <v-icon class="bell-icon">mdi-bell</v-icon>
   </v-btn>
 </div>
