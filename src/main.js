@@ -13,6 +13,7 @@ import LoginPage from './components/LoginPage.vue'
 import CheckApplication from "./components/CheckApplication.vue";
 import GetNotifications from "./components/GetNotifications.vue";
 import RegisterPage from "./components/RegisterPage.vue";
+
 //router setup
 const routes = [
   { path: "/", name: "Home", component: HomePage },
