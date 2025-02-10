@@ -1,5 +1,9 @@
 <template>
+    <navbar></navbar>
     <v-container class="px-15">
+        <br>
+        <br>
+        <br>
         <h1 class="text-h5 font-weight-bold text-primary mb-5">Notifications</h1>
         <v-row no-gutters class="py-3 border-b-sm" v-for="notification in notifications" :key='notification.id'>
             <v-col cols="10" class="text-left">
@@ -14,7 +18,11 @@
 </template>
 
 <script>
+import Nav from '@/components/BaseComponents/Nav.vue';
 export default {
+    components: {
+    'navbar': Nav,
+  },
     data() {
         return {
             notifications: [

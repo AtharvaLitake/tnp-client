@@ -1,5 +1,9 @@
 <template>
+    <navbar></navbar>
     <v-container class="px-15">
+        <br>
+        <br>
+        <br>
         <h1 class="text-h5 font-weight-bold text-primary mb-5">Your Applications</h1>
         <v-row no-gutters v-for="application in applications" :key="application.id" justify="space-between" class="mb-2 border-b-sm" style="height: 90px;">
             <v-col cols="3" class="d-flex align-center" >
@@ -13,12 +17,18 @@
                 <v-btn class="bg-primary text-subtitle-2" width="120" height="30">{{ application.status}}</v-btn>
             </v-col>
         </v-row>
-        
     </v-container>
+    
 </template>
 
 <script>
+import Nav from '@/components/BaseComponents/Nav.vue';
+
 export default {
+    name: "CheckApplications",
+    components: {
+    'navbar': Nav,
+  },
     data() {
         return {
             applications: [
