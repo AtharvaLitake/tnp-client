@@ -13,7 +13,7 @@ import LoginPage from './components/LoginPage.vue'
 import CheckApplication from "./components/CheckApplication.vue";
 import GetNotifications from "./components/GetNotifications.vue";
 import RegisterPage from "./components/RegisterPage.vue";
-
+import JobListing from "./components/JobListing.vue";
 //router setup
 const routes = [
   { path: "/", name: "Home", component: HomePage },
@@ -23,7 +23,8 @@ const routes = [
   {path:"/login",name:"Login",component:LoginPage},
   {path:"/applications",name:"Application",component:CheckApplication},
   {path:"/notifications",name:"Notification",component:GetNotifications},
-  {path:"/register",name:"Register",component:RegisterPage}
+  {path:"/register",name:"Register",component:RegisterPage},
+  {path:"/jobs",name:"JobListing",component:JobListing}
 ];
 
 const router = createRouter({

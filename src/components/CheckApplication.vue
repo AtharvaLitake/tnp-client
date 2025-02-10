@@ -1,5 +1,4 @@
 <template>
-    <navbar></navbar>
     <v-container class="px-15">
         <br>
         <br>
@@ -22,12 +21,9 @@
 </template>
 
 <script>
-import Nav from '@/components/BaseComponents/Nav.vue';
-
 export default {
     name: "CheckApplications",
     components: {
-    'navbar': Nav,
   },
     data() {
         return {

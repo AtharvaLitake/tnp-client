@@ -45,7 +45,7 @@
   }
   
   .custom-footer {
-    min-height: 200px !important; /* Reduced overall height */
+    max-height: 200px !important; /* Reduced overall height */
     display: flex;
     align-items: center;
     justify-content: center;

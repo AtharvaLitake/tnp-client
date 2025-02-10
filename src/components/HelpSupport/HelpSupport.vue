@@ -1,10 +1,5 @@
 <template>
-  <navbar></navbar>
-  <v-container class="px-15 px-xs-0">
-    
-    <br>
-    <br>
-    <br>
+  <v-container class="px-15 px-xs-0 mt-15">
     <h1 class="text-h5 font-weight-bold text-primary mb-5">Help & Support</h1>
     <p class="text-justify text-h6" style="color: rgba(8, 30, 127, 0.6);">
       This section is designed for students to submit queries directly to the Training and Placement Department,
@@ -26,14 +21,8 @@
 </template>
 
 <script>
-import Nav from '@/components/BaseComponents/Nav.vue';
-import Footer from '@/components/BaseComponents/Footer.vue';
 export default {
   name: "HelpSupport",
-  components: {
-    'navbar': Nav,
-    'app-footer': Footer
-  },
   data() {
     return {
       query: '', // For binding the textarea input

@@ -130,7 +130,7 @@ export default {
   
 <style scoped>
 .custom-card {
-  background-color: transparent !important; /* Removes background */
+  background-color: transparent !important; 
   color: black !important;
   padding: 10px;
   border-radius: 10px;
