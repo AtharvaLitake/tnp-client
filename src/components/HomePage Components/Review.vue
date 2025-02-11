@@ -31,11 +31,11 @@
 
                 <!-- Content -->
                 <div class="content-section">
-                  <v-card-title class="txt">{{
+                  <v-card-title class="txt text-primary">{{
                     company.title
                   }}</v-card-title>
                   <v-card-text>
-                    <p class="subtitle-text">{{ company.subtitle }}</p>
+                    <p class="subtitle-text custom_colors">{{ company.subtitle }}</p>
                   </v-card-text>
 
                   <!-- Star Rating -->
@@ -174,7 +174,8 @@ export default {
   object-fit: cover;
   
 }
-
-
+.custom_colors{
+    color: rgba(8, 30, 127, 0.6);
+}
 </style>
   

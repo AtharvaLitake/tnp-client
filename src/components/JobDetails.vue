@@ -1,4 +1,15 @@
-<template>Hello World</template>
+<template>
+    <v-container class="px-15 mt-15">
+    <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loading">
+      <v-progress-circular
+      model-value="20"
+      :size="62"
+      indeterminate
+      color="primary"
+    ></v-progress-circular>
+    </div>
+    </v-container>
+</template>
 
 <script>
 import axios from "axios";
@@ -7,6 +18,7 @@ export default {
     return {
       jobId: null,
       jobdetails: null,
+      loading:true,
     };
   },
   created() {
@@ -26,8 +38,20 @@ export default {
       } catch (err) {
         this.error = "Failed to fetch job details";
         console.error(err);
+      }finally{
+        this.loading=false
       }
     },
   },
 };
 </script>
+
+<style scoped>
+.custom_colors {
+  color: rgba(8, 30, 127, 0.6);
+}
+.custom_loader
+{
+  height: 90vh;
+}
+</style>
