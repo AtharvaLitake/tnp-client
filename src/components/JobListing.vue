@@ -22,7 +22,7 @@
                 <p>Application Deadlines Won't Get extended</p>
             </v-col>
             <v-col cols="5">
-                <v-btn  class="bg-primary" style="height:40px;width:100%">Details</v-btn>
+                <v-btn  class="bg-primary" style="height:40px;width:100%" @click=viewdetails(list.id)>Details</v-btn>
             </v-col>
         </v-row>
         </v-card>
@@ -54,6 +54,10 @@ export default {
         console.log(err);
       }
     },
+    viewdetails(companyid)
+    {
+      this.$router.push({ name: 'jobdetails', params: { id: companyid } });
+    }
   },
 };
 </script>
