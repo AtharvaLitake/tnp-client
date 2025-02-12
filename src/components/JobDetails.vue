@@ -1,4 +1,5 @@
 <template>
+  <nav-bar></nav-bar>
   <v-container class="px-15 mt-15">
     <!-- Loader -->
     <div
@@ -193,12 +194,18 @@
 
     <v-alert v-if="error" type="error" class="mt-5">{{ error }}</v-alert>
   </v-container>
+  <app-footer></app-footer>
 </template>
 
 <script>
 import axios from "axios";
-
+import Nav from "@/components/BaseComponents/Nav.vue";
+import Footer from "@/components/BaseComponents/Footer.vue";
 export default {
+  components:{
+    'nav-bar':Nav,
+    'app-footer':Footer
+  },
   data() {
     return {
       jobId: null,

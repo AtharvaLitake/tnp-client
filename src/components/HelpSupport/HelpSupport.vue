@@ -1,4 +1,5 @@
 <template>
+  <nav-bar></nav-bar>
   <v-container class="px-15 px-xs-0 mt-15">
     <h1 class="text-h5 font-weight-bold text-primary mb-5">Help & Support</h1>
     <p class="text-justify text-h6" style="color: rgba(8, 30, 127, 0.6);">
@@ -21,8 +22,12 @@
 </template>
 
 <script>
+import Nav from "@/components/BaseComponents/Nav.vue";
 export default {
   name: "HelpSupport",
+  components:{
+    'nav-bar':Nav
+  },
   data() {
     return {
       query: '', // For binding the textarea input

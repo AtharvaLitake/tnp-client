@@ -41,11 +41,13 @@
   <style scoped>
   .bg-custom-blue {
     background-color: #081E7F !important;
-    padding: 1px 0 !important; /* Reduced padding for a compact footer */
+    padding: 1px 0 !important; 
   }
   
   .custom-footer {
-    max-height: 200px !important; /* Reduced overall height */
+    margin-top: auto; 
+    width: 100%;
+    max-height: 200px !important; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +56,7 @@
   .icon-container {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Ensures equal spacing between icons */
+    gap: 10px; 
   }
   
   .icon-btn {
@@ -65,12 +67,12 @@
   .footer-text {
     font-size: 14px;
     word-spacing: 4px;
-    margin-top: 8px !important; /* Reduces spacing below icons */
+    margin-top: 8px !important; 
     padding: 0 10px;
   }
   
   .footer-bottom {
-    margin-top: 10px !important; /* Reduced spacing */
+    margin-top: 10px !important;
     font-size: 14px;
   }
   </style>

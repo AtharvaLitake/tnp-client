@@ -1,4 +1,5 @@
 <template>
+    <nav-bar></nav-bar>
     <v-container class="px-15">
         <br>
         <br>
@@ -14,11 +15,16 @@
             </v-col>
         </v-row>
     </v-container>
+    <app-footer></app-footer>
 </template>
 
 <script>
+import Nav from "@/components/BaseComponents/Nav.vue";
+import Footer from "@/components/BaseComponents/Footer.vue";
 export default {
-    components: {
+    components:{
+    'nav-bar':Nav,
+    'app-footer':Footer
   },
     data() {
         return {
