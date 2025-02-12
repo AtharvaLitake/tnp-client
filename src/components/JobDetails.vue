@@ -13,7 +13,10 @@
     </div>
     <h1 class="text-h5 font-weight-bold text-primary mb-2">Job Description</h1>
     <!-- Job Details -->
-    <v-card v-if="jobDetails && Object.keys(jobDetails).length" class="pa-1 no-extra-space">
+    <v-card
+      v-if="jobDetails && Object.keys(jobDetails).length"
+      class="pa-1 no-extra-space"
+    >
       <v-row align="center" class="mb-1">
         <v-col cols="2">
           <v-avatar size="80">
@@ -22,64 +25,52 @@
         </v-col>
         <v-col>
           <h1 class="text-primary font-weight-bold mb-3 ml-11">
-                {{ jobDetails.companyName }}
-              </h1>
-              <v-list-item-title class="custom-ctc ml-11"
-                ><strong>CTC:</strong> ₹{{
-                  jobDetails.companyPackage
-                }}
-                LPA</v-list-item-title
-              >
+            {{ jobDetails.companyName }}
+          </h1>
+          <v-list-item-title class="custom-ctc ml-11"
+            ><strong>CTC:</strong> ₹{{
+              jobDetails.companyPackage
+            }}
+            LPA</v-list-item-title
+          >
         </v-col>
         <v-col>
           <v-row justify="center">
-              <v-btn class="mt-1 bg-primary" size="x-large" style="text-transform: none">Apply Now</v-btn>
-            </v-row>
-            <h3
-              style="
-                color: #081e7f;
-                font-weight: bold;
-                text-align: center;
-                margin-top: 20px; ">
-              <strong>Application Deadline - </strong>{{
-                new Date(jobDetails.applicationDeadline).toLocaleDateString("en-US", {
+            <v-btn
+              class="mt-1 bg-primary"
+              size="x-large"
+              style="text-transform: none"
+              >Apply Now</v-btn
+            >
+          </v-row>
+          <h3
+            style="
+              color: #081e7f;
+              font-weight: bold;
+              text-align: center;
+              margin-top: 20px;
+            "
+          >
+            <strong>Application Deadline - </strong
+            >{{
+              new Date(jobDetails.applicationDeadline).toLocaleDateString(
+                "en-US",
+                {
                   day: "numeric",
                   month: "short",
-                })
-              }}
-            </h3>
-          </v-col>
+                }
+              )
+            }}
+          </h3>
+        </v-col>
       </v-row>
-      <!-- Job Details -->
       <v-row>
-        <v-col cols="6">
-          <!--<v-row align="center" class="mb-4">
-            <v-col cols="2">
-              <v-avatar size="200">
-                <v-img
-                  :src="jobDetails.companyLogoURL"
-                  alt="Company Logo"
-                ></v-img>
-              </v-avatar>
-            </v-col>
-            <v-col>
-              <h2 class="text-primary font-weight-bold mb-3 ml-15">
-                {{ jobDetails.companyName }}
-              </h2>
-              <v-list-item-title class="custom-ctc ml-15"
-                ><strong>CTC:</strong> ₹{{
-                  jobDetails.companyPackage
-                }}
-                LPA</v-list-item-title
-              >
-            </v-col>
-          </v-row>-->
-        
-          <v-list dense>
+        <v-col cols="6" align-self="start">
+          <v-list>
             <v-list-item>
               <v-list-item-title class="custom-ctc">
-                <strong>Role </strong>
-                <span class="custom_colors ">- {{ jobDetails.jobRole }}</span>
+                <strong>Role</strong>
+                <span class="custom_colors">- {{ jobDetails.jobRole }}</span>
               </v-list-item-title>
             </v-list-item>
 
@@ -124,40 +115,21 @@
             </v-list-item>
           </v-list>
         </v-col>
-
-         <v-divider vertical class="mx-2"></v-divider>
-
-        <v-col cols="6">
-          <v-list dense class="pa-0 ma-0">
-           <!--- <v-row justify="center">
-              <v-btn class="mt-1 bg-primary" size="x-large" style="text-transform: none">Apply Now</v-btn>
-            </v-row>
-            <h4
-              style="
-                color: #081e7f;
-                font-weight: bold;
-                text-align: center;
-                margin-top: 20px;
-                margin-bottom: 20px;
-              "
-            >
-              <strong>Application Deadline - </strong>{{
-                new Date(jobDetails.applicationDeadline).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "short",
-                })
-              }}
-            </h4>-->
-
-            <v-list-item class="mb-2 py-0">
+        <v-col cols="6" align-self="start">
+          <v-list>
+            <v-list-item>
               <v-list-item-title class="custom-ctc">
-                <strong>Eligibility Criteria -</strong></v-list-item-title
-              >
-              <strong
-                ><span class="custom_colors"
-                  >Eligibile Branches- {{ jobDetails.eligibleBranches ? jobDetails.eligibleBranches.join(", ") : "N/A" }}</span
-                ></strong
-              >
+                <strong>Eligibility Criteria -</strong>
+                <strong
+                  ><span class="custom_colors"
+                    >Eligibile Branches-
+                    {{
+                      jobDetails.eligibleBranches
+                        ? jobDetails.eligibleBranches.join(", ")
+                        : "N/A"
+                    }}</span
+                  ></strong
+                ></v-list-item-title>
             </v-list-item>
 
             <v-list-item class="mb-2">
@@ -202,15 +174,14 @@
                 }}</span></strong
               >
             </v-list-item>
-
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Job Description - </strong>
-
                 <v-btn
                   class="mt-4 bg-primary ml-4"
                   size="x-large"
-                  style="text-transform: none">
+                  style="text-transform: none"
+                >
                   Download
                 </v-btn>
               </v-list-item-title>
@@ -218,11 +189,8 @@
           </v-list>
         </v-col>
       </v-row>
-
-      
     </v-card>
 
-   
     <v-alert v-if="error" type="error" class="mt-5">{{ error }}</v-alert>
   </v-container>
 </template>
@@ -234,7 +202,7 @@ export default {
   data() {
     return {
       jobId: null,
-      jobDetails: {}, 
+      jobDetails: {},
       loading: true,
       error: null,
     };
@@ -296,7 +264,7 @@ export default {
 .no-extra-space {
   margin: 0 !important;
   padding: 0 !important;
-  position: relative; 
+  position: relative;
   top: 0 !important;
 }
 
@@ -304,38 +272,24 @@ export default {
   margin: 0 !important;
   padding: 0 !important;
   border-radius: 0 !important;
-  box-shadow: none !important; 
+  box-shadow: none !important;
 }
 
-
-/*
 .v-row {
-  flex-wrap: nowrap !important; 
-  margin: 0 !important; 
-  width: 100% !important;
-  overflow-x: hidden;
-}
-.v-col {
-  min-width: 0 !important; 
-  max-width: 100% !important;
-  overflow-x: hidden;
-}
-*/
-.v-row {
-  flex-wrap: nowrap !important; 
-  align-items: center !important; 
+  flex-wrap: nowrap !important;
+  align-items: center !important;
   margin: 0 !important;
   width: 100% !important;
 }
 
 .v-col.logo-col {
-  flex: 0 0 auto !important; 
-  width: 120px !important; 
+  flex: 0 0 auto !important;
+  width: 120px !important;
 }
 
 .v-col.details-col {
-  flex: 1 !important; 
-  min-width: 0 !important; 
+  flex: 1 !important;
+  min-width: 0 !important;
 }
 
 .v-avatar {
@@ -350,7 +304,4 @@ export default {
   max-height: 100% !important;
   object-fit: contain !important;
 }
-
-
-
 </style>
