@@ -15,6 +15,7 @@ import GetNotifications from "./components/GetNotifications.vue";
 import RegisterPage from "./components/RegisterPage.vue";
 import JobListing from "./components/JobListing.vue";
 import JobDetails from "./components/JobDetails.vue";
+
 //router setup
 const routes = [
   { path: "/", name: "Home", component: HomePage },
@@ -27,6 +28,7 @@ const routes = [
   {path:"/register",name:"Register",component:RegisterPage},
   {path:"/jobs",name:"JobListing",component:JobListing},
   {path:"/jobdetails/:id",name:"jobdetails",component:JobDetails},
+
 ];
 
 const router = createRouter({

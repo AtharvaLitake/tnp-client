@@ -14,7 +14,7 @@
         <v-btn text class="nav-link" to="/">HOME</v-btn>
         <v-btn text class="nav-link" to="/jobs">JOBS</v-btn>
         <v-btn text class="nav-link" to="/applications">APPLICATIONS</v-btn>
-        <v-btn text class="nav-link" to="/profile">PROFILE</v-btn>
+        <v-btn text class="nav-link" to="/register">PROFILE</v-btn>
         <v-btn text class="nav-link" to="/help">HELP</v-btn>
       </template>
   
