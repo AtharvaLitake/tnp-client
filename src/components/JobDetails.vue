@@ -130,7 +130,8 @@
                         : "N/A"
                     }}</span
                   ></strong
-                ></v-list-item-title>
+                ></v-list-item-title
+              >
             </v-list-item>
 
             <v-list-item class="mb-2">
@@ -178,13 +179,11 @@
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Job Description - </strong>
-                <v-btn
-                  class="mt-4 bg-primary ml-4"
-                  size="x-large"
-                  style="text-transform: none"
-                >
-                  Download
-                </v-btn>
+                <a :href="jobDetails.companyJdURL" download="Job_Description.pdf">
+                  <v-btn class="mt-4 bg-primary ml-4" size="x-large">
+                    Download
+                  </v-btn>
+                </a>
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -202,9 +201,9 @@ import axios from "axios";
 import Nav from "@/components/BaseComponents/Nav.vue";
 import Footer from "@/components/BaseComponents/Footer.vue";
 export default {
-  components:{
-    'nav-bar':Nav,
-    'app-footer':Footer
+  components: {
+    "nav-bar": Nav,
+    "app-footer": Footer,
   },
   data() {
     return {
