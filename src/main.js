@@ -15,6 +15,8 @@ import GetNotifications from "./components/GetNotifications.vue";
 import RegisterPage from "./components/RegisterPage.vue";
 import JobListing from "./components/JobListing.vue";
 import JobDetails from "./components/JobDetails.vue";
+//axios setup
+import axios from 'axios'
 
 //router setup
 const routes = [
@@ -31,9 +33,31 @@ const routes = [
 
 ];
 
+//Attaching header
+const token = localStorage.getItem("studentAuth");
+if (token) {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
+
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+//guard for login
+router.beforeEach((to,from,next) => {
+  const token = localStorage.getItem("studentAuth");
+  if (to.path !== "/" && to.path !== "/lock" && to.path!=="/login" && to.path!=="/register") {
+    to.meta.requiresAuth = true;
+  }
+  if (
+    to.meta.requiresAuth &&
+    (!token || token == "null" || token == "undefined")
+  ) {
+    next("/lock");
+  } else {
+    next();
+  }
 });
 
 loadFonts();
