@@ -170,17 +170,17 @@
                 <v-radio
                   label="Male"
                   class="custom_colors text-h7"
-                  value="male"
+                  value="Male"
                 ></v-radio>
                 <v-radio
                   label="Female"
                   class="custom_colors text-h7"
-                  value="female"
+                  value="Female"
                 ></v-radio>
                 <v-radio
                   label="Other"
                   class="custom_colors text-h7"
-                  value="other"
+                  value="Other"
                 ></v-radio
               ></v-radio-group>
             </v-card>
@@ -259,17 +259,17 @@
                 <v-radio
                   label="Computer Engineering"
                   class="custom_colors text-h7"
-                  value="ce"
+                  value="CE"
                 ></v-radio>
                 <v-radio
                   label="Information Technology"
                   class="custom_colors text-h7"
-                  value="it"
+                  value="IT"
                 ></v-radio>
                 <v-radio
                   label="E & TC"
                   class="custom_colors text-h7"
-                  value="entc"
+                  value="ENTC"
                 ></v-radio
               ></v-radio-group>
               <h4 class="text-h7 font-weight-bold text-primary">BE Division</h4>
@@ -424,7 +424,7 @@
                 <v-radio
                   label="Diploma"
                   class="custom_colors text-h7"
-                  value="diploma"
+                  value="Diploma"
                 ></v-radio
               ></v-radio-group>
             </v-card>
@@ -570,7 +570,7 @@
           <v-col cols="12">
             <v-card class="text-justify pa-5">
               <h4 class="text-h7 font-weight-bold text-primary">
-                MH-CET Percentile 
+                MH-CET Percentile
               </h4>
               <p class="custom_colors text-h7">
                 (Correct upto 2 decimal points Ex: 96.69). Put -1 (minus 1) if
@@ -586,7 +586,7 @@
                 :rules="[(v) => !!v || 'This is required field']"
               ></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
-                JEE Mains Percentile 
+                JEE Mains Percentile
               </h4>
               <p class="custom_colors text-h7">
                 (Correct upto 2 decimal points Ex: 96.69). Put -1 (minus 1) if
@@ -763,23 +763,23 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 In which SEM you have Active Backlog
               </h4>
-              <v-checkbox-group 
+              <v-checkbox-group
                 v-model="formData.active_backlog_semesters"
                 column
                 :rules="[(v) => !!v || 'This is required field']"
               >
                 <v-checkbox
-                  class=" custom_colors text-h7 mt-1"
+                  class="custom_colors text-h7 mt-1"
                   label="FE Sem 1"
                   value="FE Sem 1"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7 mt-n8" 
+                  class="custom_colors text-h7 mt-n8"
                   label="FE Sem 2"
                   value="FE Sem 2"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7 mt-n8" 
+                  class="custom_colors text-h7 mt-n8"
                   label="SE Sem 1"
                   value="SE Sem 1"
                 ></v-checkbox>
@@ -887,7 +887,10 @@
                 variant="underlined"
                 color="primary"
                 :rules="[(v) => !!v || 'This is required field']"
-                @input="formData.passport_number = formData.passport_number.toUpperCase()"
+                @input="
+                  formData.passport_number =
+                    formData.passport_number.toUpperCase()
+                "
               ></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary mb-1">
                 Citizenship *
@@ -1099,10 +1102,12 @@
         </v-btn>
       </v-col>
     </v-row>
-     <!--  Success Popup -->
-     <v-dialog v-model="showPopup" max-width="350">
+    <!--  Success Popup -->
+    <v-dialog v-model="showPopup" max-width="350">
       <v-card class="pa-4 text-center">
-        <v-icon color="primary" size="50" class="ml-25">mdi-check-circle</v-icon>
+        <v-icon color="primary" size="50" class="ml-25"
+          >mdi-check-circle</v-icon
+        >
         <v-card-title class="text-h6">Form Submitted!</v-card-title>
         <v-card-text>Your form has been submitted successfully.</v-card-text>
         <v-card-actions>
@@ -1118,6 +1123,8 @@
 import Nav from "@/components/BaseComponents/Nav.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import axios from "axios";
+
 export default {
   components: {
     "nav-bar": Nav,
@@ -1125,7 +1132,7 @@ export default {
 
   data() {
     return {
-        showPopup: false,
+      showPopup: false,
       show2: false,
       page: 1,
       formData: {
@@ -1193,17 +1200,17 @@ export default {
       const { valid } = await form.validate();
 
       if (valid) {
-        this.page++; 
+        this.page++;
       } else {
-        toast.error("⚠️ Please fill all fields!", { 
-          position: "top-center",  
-          autoClose: 4000 ,
+        toast.error("⚠️ Please fill all fields!", {
+          position: "top-center",
+          autoClose: 4000,
           style: {
-            width: "600px", 
-            height: "400px", 
-            fontSize: "18px", 
-            padding: "20px", 
-            textAlign: "center", 
+            width: "600px",
+            height: "400px",
+            fontSize: "18px",
+            padding: "20px",
+            textAlign: "center",
           },
         });
         return;
@@ -1213,42 +1220,50 @@ export default {
     prevPage() {
       if (this.page > 1) this.page--;
     },
-    /*async submitForm() {
-      const form = this.$refs.form;
-      if (!form) {
-        alert("Form reference missing.");
-        return;
-      }
 
-      const { valid } = await form.validate();
-      if (valid) {
-        alert("Form submitted successfully!");
-        console.log(this.formData);
-      } else {
-        alert("Please fill all required fields.");
-      }
-    },*/
     async submitForm() {
       const form = this.$refs.form;
       if (!form) return;
 
       const { valid } = await form.validate();
-      if (valid) {
-        this.showPopup = true; 
-        console.log(this.formData);
-      } else {
-        toast.error("⚠️ Please fill all fields!", { 
-          position: "top-center",  
-          autoClose: 4000 ,
+      if (!valid) {
+        toast.error("⚠️ Please fill all fields!", {
+          position: "top-center",
+          autoClose: 4000,
           style: {
-            width: "600px", 
-            height: "400px", 
-            fontSize: "18px", 
-            padding: "20px", 
-            textAlign: "center", 
+            width: "600px",
+            height: "400px",
+            fontSize: "18px",
+            padding: "20px",
+            textAlign: "center",
           },
         });
         return;
+      }
+
+      this.showPopup = true;
+      console.log(this.formData);
+
+      const data = new FormData();
+      Object.keys(this.formData).forEach((key) => {
+        if (this.formData[key] !== null && this.formData[key] !== "") {
+          data.append(key, this.formData[key]);
+        }
+      });
+
+      try {
+        const response = await axios.post(
+          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/students",
+          data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log("Response:", response.data);
+      } catch (error) {
+        console.error("Error uploading:", error);
       }
     },
   },
@@ -1261,6 +1276,4 @@ export default {
 .custom_textfield {
   color: rgba(8, 30, 127);
 }
-
-
 </style>
