@@ -435,6 +435,7 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 12th class percentage
               </h4>
+              <p class="custom_colors text-h7">Diploma students enter 0</p>
               <v-text-field
                 v-model="formData.percentage_12th"
                 class="custom_textfield"
@@ -573,8 +574,8 @@
                 MH-CET Percentile
               </h4>
               <p class="custom_colors text-h7">
-                (Correct upto 2 decimal points Ex: 96.69). Put -1 (minus 1) if
-                you haven't given MH-CET. Do NOT put % sign
+                (Correct upto 2 decimal points Ex: 96.69). Put 0 (zero) if you
+                haven't given MH-CET. Do NOT put % sign
               </p>
               <v-text-field
                 v-model="formData.percentile_cet"
@@ -589,8 +590,8 @@
                 JEE Mains Percentile
               </h4>
               <p class="custom_colors text-h7">
-                (Correct upto 2 decimal points Ex: 96.69). Put -1 (minus 1) if
-                you haven't given JEE. Do NOT put % sign
+                (Correct upto 2 decimal points Ex: 96.69). Put 0 (zero) if you
+                haven't given JEE. Do NOT put % sign
               </p>
               <v-text-field
                 v-model="formData.percentile_jee"
@@ -668,9 +669,7 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 FE 1st sem SGPA *
               </h4>
-              <p class="custom_colors text-h7">
-                Diploma people put -1 (minus 1)
-              </p>
+              <p class="custom_colors text-h7">Diploma people put 0 (zero)</p>
               <v-text-field
                 v-model="formData.sgpa_fe_sem_1"
                 type="number"
@@ -682,9 +681,7 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 FE 2nd sem SGPA *
               </h4>
-              <p class="custom_colors text-h7">
-                Diploma people put -1 (minus 1)
-              </p>
+              <p class="custom_colors text-h7">Diploma people put 0 (zero)</p>
               <v-text-field
                 v-model="formData.sgpa_fe_sem_2"
                 type="number"
@@ -743,7 +740,7 @@
           <v-col cols="12">
             <v-card class="text-justify pa-5">
               <h4 class="text-h7 font-weight-bold text-primary">
-                Total active backlogs *
+                Total active backlogs
               </h4>
               <p class="custom_colors text-h7">
                 If you have no active backlog, enter 0. If you get a Backlog in
@@ -827,7 +824,7 @@
               <v-text-field
                 v-model="formData.year_down"
                 class="custom_textfield"
-                placeholder="YES/NO"
+                placeholder="Yes/No"
                 variant="underlined"
                 color="primary"
                 :rules="[(v) => !!v || 'This is required field']"
@@ -838,7 +835,7 @@
           <v-col cols="12">
             <v-card class="text-justify pa-5">
               <h4 class="text-h7 font-weight-bold text-primary mb-1">
-                Aadhar Number *
+                Aadhar Number
               </h4>
               <p class="custom_colors text-h7">Do NOT put spaces and dashes</p>
               <v-text-field
@@ -1045,20 +1042,12 @@
             </v-card>
           </v-col>
 
-          <v-btn class="mt-4 bg-primary" size="large" type="submit">
-            Submit
-          </v-btn>
-
-          <v-col cols="12">
-            <v-card class="text-justify pa-4 bg-primary">
-              <h1
-                class="text-h6 font-weight-bold mb-1"
-                style="color: #fff; text-align: center"
-              >
-                All the best for your placement season!
-              </h1>
-            </v-card>
-          </v-col>
+          <v-row class="d-flex justify-end mt-4 mr-1">
+            <v-col cols="3">
+            <v-btn class="bg-primary " size="x-large" type="submit" block>
+              Submit
+            </v-btn></v-col>
+        </v-row>
         </v-row>
       </v-container>
     </v-form>
@@ -1102,20 +1091,6 @@
         </v-btn>
       </v-col>
     </v-row>
-    <!--  Success Popup -->
-    <v-dialog v-model="showPopup" max-width="350">
-      <v-card class="pa-4 text-center">
-        <v-icon color="primary" size="50" class="ml-25"
-          >mdi-check-circle</v-icon
-        >
-        <v-card-title class="text-h6">Form Submitted!</v-card-title>
-        <v-card-text>Your form has been submitted successfully.</v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" @click="showPopup = false">OK</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </v-container>
 </template>
   
@@ -1241,7 +1216,6 @@ export default {
         return;
       }
 
-      this.showPopup = true;
       console.log(this.formData);
 
       const data = new FormData();
@@ -1262,6 +1236,17 @@ export default {
           }
         );
         console.log("Response:", response.data);
+        toast.success("Form submitted successfully!", {
+          position: "top-center",
+          autoClose: 4000,
+          style: {
+            width: "600px",
+            height: "400px",
+            fontSize: "18px",
+            padding: "20px",
+            textAlign: "center",
+          },
+        });
       } catch (error) {
         console.error("Error uploading:", error);
       }
