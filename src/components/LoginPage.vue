@@ -15,7 +15,7 @@
                                         New Student ? <span class="text-primary text-decoration-line">Register for
                                             placement opportunities</span>
                                     </p>
-                                    <v-form @submit.prevent class="pa-3 mt-3">
+                                    <v-form @submit.prevent="studentlogin" class="pa-3 mt-3">
                                         <!-- Registration Number -->
                                         <v-text-field v-model="Registration_number" label="Registration_number"
                                             class="mb-1 pa-1" placeholder="Enter your Registration Number"
@@ -29,7 +29,7 @@
                                             color="primary" style="color:rgba(8, 30, 127)"
                                             @click:append-inner="show2 = !show2"></v-text-field>
 
-                                        <v-btn class="mt-2 bg-primary" text="Login Now" type="submit" block></v-btn>
+                                        <v-btn class="mt-2 bg-primary" text="Login Now" type="submit" block :loading="loading"></v-btn>
                                     </v-form>
                                 </v-card>
                             </v-col>
@@ -44,12 +44,38 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
             Registration_number: null,
             student_password: '',
-            show2:false
+            show2:false,
+            loading:false,
+        }
+    },
+    methods:{
+        studentlogin()
+        {
+            const studentCredentials = {
+                pict_registration_id: this.Registration_number,
+                password: this.student_password,
+            }
+            this.loading=true
+            axios.post('https://tnp-portal-backend-tpx5.onrender.com/api/v1/students/login', studentCredentials)
+                .then(response => {
+                    console.log('Login successful:', response.data);
+                    //Storing Token in Backend
+                    localStorage.setItem('adminAuth', response.data.token)
+                    //Setting header as token
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+                    this.$router.push('/addcompany')
+                    this.loading=false
+                })
+                .catch(error => {
+                    console.error('Login failed:', error);
+                    this.loading=false
+                })
         }
     }
 }
