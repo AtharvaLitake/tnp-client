@@ -763,43 +763,43 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 In which SEM you have Active Backlog
               </h4>
-              <v-checkbox-group
+              <v-checkbox-group 
                 v-model="formData.active_backlog_semesters"
                 column
                 :rules="[(v) => !!v || 'This is required field']"
               >
                 <v-checkbox
-                  class="custom_colors text-h7 mt-1"
+                  class=" custom_colors text-h7 mt-1"
                   label="FE Sem 1"
                   value="FE Sem 1"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7 mt-1"
+                  class="custom_colors text-h7 mt-n8" 
                   label="FE Sem 2"
                   value="FE Sem 2"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7"
+                  class="custom_colors text-h7 mt-n8" 
                   label="SE Sem 1"
                   value="SE Sem 1"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7"
+                  class="custom_colors text-h7 mt-n8"
                   label="SE Sem 2"
                   value="SE Sem 2"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7"
+                  class="custom_colors text-h7 mt-n8"
                   label="TE Sem 1"
                   value="TE Sem 1"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7"
+                  class="custom_colors text-h7 mt-n8"
                   label="TE Sem 2"
                   value="TE Sem 2"
                 ></v-checkbox>
                 <v-checkbox
-                  class="custom_colors text-h7"
+                  class="custom_colors text-h7 mt-n8"
                   label="None"
                   value="None"
                 ></v-checkbox>
@@ -1261,4 +1261,6 @@ export default {
 .custom_textfield {
   color: rgba(8, 30, 127);
 }
+
+
 </style>
