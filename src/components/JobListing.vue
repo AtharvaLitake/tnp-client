@@ -13,7 +13,7 @@
 
     <v-row no-gutters class="d-flex justify-space-between" >
       <v-col cols="5" v-for="list in joblists" :key="list.id" >
-        <v-card style="height: 260px" class="mt-4 mb-6">
+        <v-card style="min-height: 180px" class="mt-4 mb-6">
           <v-row class="border-b-sm">
             <v-col cols="3">
               <v-img
@@ -47,7 +47,7 @@
               }}
             </p>
           </div>
-          <v-row class="px-3 pb-3 mb-3">
+          <v-row class="px-3 pb-0 mb-0">
             <v-col cols="7" class="custom_colors text-subtitle-2 ma-0">
               <p>Application Deadlines Won't Get extended</p>
             </v-col>
