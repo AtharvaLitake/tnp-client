@@ -963,7 +963,7 @@
               </h1>
               <p class="custom_colors text-h7">
                 Naming of file should be PICT-Registration-No_FirstNameLastName_
-                AMCAT_Result.pdf e<br />g:
+                AMCAT_Result.pdf <br />eg:
                 E2K19122868_ShubhJain_AMCAT_Result.pdf
               </p>
               <p class="custom_colors text-h7">
@@ -1042,7 +1042,7 @@
             </v-card>
           </v-col>
 
-          <v-row class="d-flex justify-end mt-4 mr-1">
+          <v-row class="d-flex justify-start mt-4 mr-1">
             <v-col cols="3">
             <v-btn class="bg-primary " size="x-large" type="submit" block>
               Submit
