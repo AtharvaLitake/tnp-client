@@ -12,7 +12,7 @@ import CompanyCarousel from './HomePage Components/CompanyCarousel.vue';
 import HomeTitle from './HomePage Components/HomeTitle.vue';
 import Achievements from './HomePage Components/Achievements.vue';
 import Review from './HomePage Components/Review.vue';
-import Nav from "@/components/BaseComponents/Nav.vue";
+import Nav from "@/components/BaseComponents/NavBar.vue";
 import Footer from "@/components/BaseComponents/Footer.vue";
 export default {
     components: {
