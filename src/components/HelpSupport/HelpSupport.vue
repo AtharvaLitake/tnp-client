@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Nav from "@/components/BaseComponents/Nav.vue";
+import Nav from "@/components/BaseComponents/NavBar.vue";
 export default {
   name: "HelpSupport",
   components:{

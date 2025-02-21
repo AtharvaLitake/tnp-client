@@ -69,7 +69,7 @@
 
 <script>
 import axios from "axios";
-import Nav from "@/components/BaseComponents/Nav.vue";
+import Nav from "@/components/BaseComponents/NavBar.vue";
 import Footer from "@/components/BaseComponents/Footer.vue";
 export default {
   components: {
@@ -89,7 +89,7 @@ export default {
     async fetchjobs() {
       try {
         const response = await axios.get(
-          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs"
+          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/active"
         );
         this.joblists = response.data.jobs;
         console.log(this.joblists);

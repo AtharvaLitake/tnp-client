@@ -1095,7 +1095,7 @@
 </template>
   
   <script>
-import Nav from "@/components/BaseComponents/Nav.vue";
+import Nav from "@/components/BaseComponents/NavBar.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import axios from "axios";
