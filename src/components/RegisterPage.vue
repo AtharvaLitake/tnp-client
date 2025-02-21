@@ -958,9 +958,39 @@
 
           <v-col cols="12">
             <v-card class="text-justify pa-5">
-              <h1 class="text-h5 font-weight-bold text-primary mb-1">
-                Upload PDF of AMCAT Test Result
+              <h1 class="text-h5 font-weight-bold text-primary mb-2">
+                AMCAT Test Result
               </h1>
+              <h4 class="text-h7 font-weight-bold text-primary mb-0">
+                Enter ELQ Score
+              </h4>
+              <p class="custom_colors text-h7">Enter correct score </p>
+              <v-text-field
+                v-model="formData.elq_score"
+                class="custom_textfield"
+                placeholder="Enter here"
+                variant="underlined"
+                color="primary"
+                :rules="[(v) => !!v || 'This is required']"
+                required
+              ></v-text-field>
+              <h4 class="text-h7 font-weight-bold text-primary mb-0">
+                Enter Autometa Score
+              </h4>
+              <p class="custom_colors text-h7">Enter correct score</p>
+              <v-text-field
+                v-model="formData.automata_score"
+                class="custom_textfield"
+                placeholder="Enter here"
+                variant="underlined"
+                color="primary"
+                :rules="[(v) => !!v || 'This is required']"
+                required
+              ></v-text-field>
+
+              <h4 class="text-h7 font-weight-bold text-primary mb-0">
+                Upload PDF of Amcat Test Result
+              </h4>
               <p class="custom_colors text-h7">
                 Naming of file should be PICT-Registration-No_FirstNameLastName_
                 AMCAT_Result.pdf <br />eg:
@@ -1164,6 +1194,8 @@ export default {
         amcat_result: null,
         be_receipt: null,
         password: "",
+        elq_score:null,
+        automata_score:null,
       },
     };
   },
