@@ -89,7 +89,7 @@ export default {
     async fetchjobs() {
       try {
         const response = await axios.get(
-          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs"
+          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/active"
         );
         this.joblists = response.data.jobs;
         console.log(this.joblists);

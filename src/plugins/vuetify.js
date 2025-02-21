@@ -6,11 +6,11 @@ import { createVuetify } from 'vuetify';
 
 export default createVuetify({
   theme: {
-    defaultTheme: 'light', // Set default theme to light
+    defaultTheme: 'light',
     themes: {
       light: {
         colors: {
-          primary:'#081e7f', // Example primary color
+          primary:'#081e7f',
         },
       },
     },
