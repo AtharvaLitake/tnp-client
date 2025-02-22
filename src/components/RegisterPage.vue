@@ -975,7 +975,7 @@
                 required
               ></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary mb-0">
-                Enter Autometa Score
+                Enter Automata Score
               </h4>
               <p class="custom_colors text-h7">Enter correct score</p>
               <v-text-field

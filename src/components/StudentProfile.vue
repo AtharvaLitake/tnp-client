@@ -79,9 +79,22 @@
                                     studentDetails.percentage12th }}%</span></p>
                     </v-col>
                 </v-row>
+                <h1 class="text-h5 font-weight-bold text-primary mb-2">Amcat Result Details</h1>
+                <v-row class="mb-2" no-gutters>
+                    <v-col cols="6">
+                        <p class="text-body-1  font-weight-regular text-primary mb-2">ELQ Score - <span
+                                class="custom-style">{{ studentDetails.elqScore }}</span></p>
+                    </v-col>
+                    <v-col cols="6">
+                        <p class="text-body-1  font-weight-regular text-primary mb-2">Automata Score - <span
+                                class="custom-style">{{
+                                    studentDetails.automataScore }}</span></p>
+                    </v-col>
+                </v-row>
             </div>
+
             <h1 class="text-h5 font-weight-bold text-primary mb-2 mt-1" v-if="!loader">SGPA Improvement Graph</h1>
-            <div id="lineGraph" style="height:300px;width:100%"></div>
+            <div id="lineGraph" style="height:300px;"></div>
         </v-card>
     </v-container>
 </template>
