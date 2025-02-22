@@ -26,8 +26,10 @@
 
     <!-- Notification Bell -->
     <div style="padding-right: 36px; margin-left: -20px;">
-      <v-btn icon to="/notifications">
-        <v-icon class="bell-icon">mdi-bell</v-icon>
+      <v-btn icon to="/notifications" class="text-none" stacked>
+        <v-badge dot color="warning" content="1+">
+          <v-icon class="bell-icon">mdi-bell</v-icon>
+        </v-badge>
       </v-btn>
     </div>
 
