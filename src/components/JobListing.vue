@@ -4,8 +4,7 @@
     <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loading">
       <v-progress-circular
       model-value="20"
-      :size="80"
-      :width="10"
+      :size="62"
       indeterminate
       color="primary"
     ></v-progress-circular>

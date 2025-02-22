@@ -1,13 +1,13 @@
 <template>
     <nav-bar></nav-bar>
     <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loader">
-        <v-progress-circular model-value="20" :size="80" :width="10" indeterminate
+        <v-progress-circular model-value="20" :size="62" indeterminate
             color="primary"></v-progress-circular>
     </div>
     <v-container class="px-15 mt-15">
         <v-card class="pa-3 px-10">
             <div v-if="!loader">
-                <v-row class="d-flex mb-3 mt-2" no-gutters>
+                <v-row class="d-flex mb-5 mt-2" no-gutters>
                     <v-col cols="2">
                         <v-img src="@/Images/Profile-Picture.svg" width="130"></v-img>
                     </v-col>
@@ -41,20 +41,20 @@
                     </v-col>
                 </v-row>
                 <h1 class="text-h5 font-weight-bold text-primary mb-2">Contact Details</h1>
-                <v-row class="mb-2" no-gutters>
+                <v-row class="mb-3" no-gutters>
                     <v-col cols="6">
                         <p class="text-body-1  font-weight-regular text-primary mb-2">Primary Email - <span
                                 class="custom-style">{{ studentDetails.primaryEmail }}</span></p>
 
                     </v-col>
                     <v-col cols="6">
-                        <p class="text-body-1  font-weight-regular text-primary mb-2">Mobile No. - <span
+                        <p class="text-body-1  font-weight-regular text-primary mb-2 ml-10">Mobile No. - <span
                                 class="custom-style">{{
                                     studentDetails.primaryMobileNumber }}</span></p>
                     </v-col>
                 </v-row>
                 <h1 class="text-h5 font-weight-bold text-primary mb-2">Personal Details</h1>
-                <v-row class="mb-2" no-gutters>
+                <v-row class="mb-3" no-gutters>
                     <v-col cols="6">
                         <p class="text-body-1  font-weight-regular text-primary mb-2">Aadhar Number - <span
                                 class="custom-style">{{ studentDetails.aadharNumber }}</span></p>
@@ -62,19 +62,19 @@
                                 class="custom-style">{{ studentDetails.passportNumber }}</span></p>
                     </v-col>
                     <v-col cols="6">
-                        <p class="text-body-1  font-weight-regular text-primary mb-2">PanCard - <span
+                        <p class="text-body-1  font-weight-regular text-primary mb-2 ml-10">PanCard - <span
                                 class="custom-style">{{
                                     studentDetails.panNumber }}</span></p>
                     </v-col>
                 </v-row>
                 <h1 class="text-h5 font-weight-bold text-primary mb-2">Educational Details</h1>
-                <v-row class="mb-2" no-gutters>
+                <v-row class="mb-3" no-gutters>
                     <v-col cols="6">
                         <p class="text-body-1  font-weight-regular text-primary mb-2">10th Percentage - <span
                                 class="custom-style">{{ studentDetails.percentage10th }}%</span></p>
                     </v-col>
                     <v-col cols="6">
-                        <p class="text-body-1  font-weight-regular text-primary mb-2">Diploma/12th Percentage - <span
+                        <p class="text-body-1  font-weight-regular text-primary mb-2 ml-10">Diploma/12th Percentage - <span
                                 class="custom-style">{{
                                     studentDetails.percentage12th }}%</span></p>
                     </v-col>
@@ -95,8 +95,6 @@
 
             <h1 class="text-h5 font-weight-bold text-primary mb-2 mt-1" v-if="!loader">SGPA Improvement Graph</h1>
             <div id="lineGraph" style="height:300px;"></div>
-
-            
         </v-card>
     </v-container>
 </template>
