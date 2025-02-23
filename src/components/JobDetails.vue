@@ -43,7 +43,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="6" align-self="start">
+        <v-col cols="12" sm="6" align-self="start">
           <v-list>
             <v-list-item>
               <v-list-item-title class="custom-ctc">
@@ -79,7 +79,7 @@
             </v-list-item>
           </v-list>
         </v-col>
-        <v-col cols="6" align-self="start">
+        <v-col cols="12" sm="6" align-self="start">
           <v-list>
             <v-list-item>
               <v-list-item-title class="custom-ctc">
