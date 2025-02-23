@@ -37,13 +37,7 @@
               margin-top: 20px;
             ">
             <strong>Application Deadline - </strong>{{
-              new Date(jobDetails.applicationDeadline).toLocaleDateString(
-                "en-US",
-                {
-                  day: "numeric",
-                  month: "short",
-                }
-              )
+              fomatteddate
             }}
           </h3>
         </v-col>
@@ -141,6 +135,7 @@
 import axios from "axios";
 import Nav from "@/components/BaseComponents/NavBar.vue";
 import Footer from "@/components/BaseComponents/Footer.vue";
+import dayjs from "dayjs";
 export default {
   components: {
     "nav-bar": Nav,
@@ -151,6 +146,7 @@ export default {
       jobId: null,
       jobDetails: {},
       loading: true,
+      fomatteddate:'',
       error: null,
     };
   },
@@ -168,7 +164,8 @@ export default {
           `https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/${id}`
         );
         this.jobDetails = response.data.job;
-        console.log("Job Details:", this.jobDetails);
+        console.log(this.jobDetails)
+        this.fomatteddate=dayjs(this.jobDetails.applicationDeadline).format('DD/MM/YYYY')
       } catch (err) {
         this.error = "Failed to fetch job details";
         console.error(err);
@@ -189,11 +186,6 @@ export default {
     }
   },
   computed: {
-    formattedDeadline() {
-      return this.jobDetails.applicationDeadline
-        ? new Date(this.jobDetails.applicationDeadline).toLocaleDateString()
-        : "Not Available";
-    },
     buttonText(){
       if (this.jobDetails.hasApplied) {
         return 'Applied';
