@@ -71,7 +71,7 @@ export default {
                     localStorage.setItem('studentAuth', response.data.token)
                     //Setting header as token
                     axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
-                    this.$router.push('/')
+                    this.$router.push('/home')
                     this.loading = false
                 })
                 .catch(error => {
