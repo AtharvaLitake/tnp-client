@@ -146,6 +146,7 @@ export default {
       jobId: null,
       jobDetails: {},
       loading: true,
+      btnloader:false,
       fomatteddate:'',
       error: null,
     };
@@ -174,6 +175,7 @@ export default {
       }
     },
     async applyCompany(jobid){
+      this.btnloader=true
       try {
         await axios.post(
           `https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/${jobid}/apply`
@@ -181,6 +183,7 @@ export default {
         this.$router.push("/applications")
       } catch (err) {
         this.error = "Failed to Apply to Job";
+        this.btnloader=false
         console.error(err);
       }
     }
