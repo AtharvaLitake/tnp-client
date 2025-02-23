@@ -1,5 +1,5 @@
 <template>
-    <v-footer class="bg-primary text-white custom-footer mt-10">
+    <v-footer class="bg-primary text-white custom-footer mt-auto">
       <div class="text-center d-flex flex-column">
         <!-- About Us Section -->
         <v-row justify="center">
