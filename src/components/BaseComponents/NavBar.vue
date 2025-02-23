@@ -11,7 +11,7 @@
 
     <!-- Desktop Navigation -->
     <template v-if="$vuetify.display.mdAndUp">
-      <v-btn text class="nav-link" to="/">HOME</v-btn>
+      <v-btn text class="nav-link" to="/home">HOME</v-btn>
       <v-btn text class="nav-link" to="/jobs">JOBS</v-btn>
       <v-btn text class="nav-link" to="/applications">APPLICATIONS</v-btn>
       <v-btn text class="nav-link" to="/studentprofile">PROFILE</v-btn>
