@@ -7,7 +7,7 @@
                         <v-img src="@/Images/404 - Not Found Logo.svg" cover></v-img>
                     </v-col>
                 </v-row>
-                <v-btn class="mt-4 bg-primary" size="x-large" to="/">Go to Home</v-btn>
+                <v-btn class="mt-4 bg-primary" size="x-large" to="/home">Go to Home</v-btn>
             </v-col>
         </v-row>
     </v-container>

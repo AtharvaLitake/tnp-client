@@ -17,12 +17,14 @@ import JobListing from "./components/JobListing.vue";
 import JobDetails from "./components/JobDetails.vue";
 import StudentProfile from "./components/StudentProfile.vue";
 import NotFound from "./components/BaseComponents/NotFound.vue"
+import SplashScreen from "./components/BaseComponents/SplashScreen.vue";
 //axios setup
 import axios from "axios";
 
 //router setup
 const routes = [
-  { path: "/", name: "Home", component: HomePage },
+  { path: "/", name: "SplashScreen", component: SplashScreen },
+  { path: "/home", name: "Home", component: HomePage },
   { path: "/help", name: "Help", component: HelpSupport },
   { path: "/lock", name: "Lock", component: LockPage },
   { path: "/wait", name: "Wait", component: WaitPage },
@@ -62,7 +64,8 @@ router.beforeEach((to, from, next) => {
     to.path !== "/" &&
     to.path !== "/lock" &&
     to.path !== "/login" &&
-    to.path !== "/register"
+    to.path !== "/register" &&
+    to.path !== "/home"
   ) {
     to.meta.requiresAuth = true;
   }
