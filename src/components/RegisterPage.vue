@@ -1081,13 +1081,6 @@
         </v-row>
       </v-container>
     </v-form>
-    <!---<v-pagination
-  class="text-primary"
-  v-model="page"
-  :length="4"
-  rounded="circle"
-  @update:modelValue="blockPaginationChange"
-/>-->
     <v-pagination
       v-model="page"
       :length="4"

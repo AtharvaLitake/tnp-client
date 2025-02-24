@@ -16,12 +16,13 @@ import RegisterPage from "./components/RegisterPage.vue";
 import JobListing from "./components/JobListing.vue";
 import JobDetails from "./components/JobDetails.vue";
 import StudentProfile from "./components/StudentProfile.vue";
-import NotFound from "./components/BaseComponents/NotFound.vue"
+import NotFound from "./components/BaseComponents/NotFound.vue";
 import SplashScreen from "./components/BaseComponents/SplashScreen.vue";
 import MockInterview from "./components/AI_Module/MockInterview.vue";
+import PrepAIQuestions from "./components/AI_Module/PrepAIQuestions.vue";
+
 //axios setup
 import axios from "axios";
-
 //router setup
 const routes = [
   { path: "/", name: "SplashScreen", component: SplashScreen },
@@ -36,6 +37,7 @@ const routes = [
   { path: "/jobs", name: "JobListing", component: JobListing },
   { path: "/jobdetails/:id", name: "jobdetails", component: JobDetails },
   { path: "/mock", name: "MockInterview", component: MockInterview },
+  { path: "/prepquestions", name: "PrepAiQuestions", component: PrepAIQuestions },
   {
     path: "/studentprofile",
     name: "studentProfile",
