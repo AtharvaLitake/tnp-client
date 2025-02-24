@@ -15,7 +15,7 @@
       <v-btn text class="nav-link" to="/jobs">JOBS</v-btn>
       <v-btn text class="nav-link" to="/applications">APPLICATIONS</v-btn>
       <v-btn text class="nav-link" to="/studentprofile">PROFILE</v-btn>
-      <v-btn text class="nav-link" to="/mock">AI</v-btn>
+      <v-btn text class="nav-link" to="/mock">Prep AI</v-btn>
       <v-btn text class="nav-link" to="/help">HELP</v-btn>
     </template>
 
