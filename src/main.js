@@ -18,6 +18,7 @@ import JobDetails from "./components/JobDetails.vue";
 import StudentProfile from "./components/StudentProfile.vue";
 import NotFound from "./components/BaseComponents/NotFound.vue"
 import SplashScreen from "./components/BaseComponents/SplashScreen.vue";
+import MockInterview from "./components/AI_Module/MockInterview.vue";
 //axios setup
 import axios from "axios";
 
@@ -34,6 +35,7 @@ const routes = [
   { path: "/register", name: "Register", component: RegisterPage },
   { path: "/jobs", name: "JobListing", component: JobListing },
   { path: "/jobdetails/:id", name: "jobdetails", component: JobDetails },
+  { path: "/mock", name: "MockInterview", component: MockInterview },
   {
     path: "/studentprofile",
     name: "studentProfile",
