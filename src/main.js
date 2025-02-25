@@ -38,7 +38,7 @@ const routes = [
   { path: "/jobs", name: "JobListing", component: JobListing },
   { path: "/jobdetails/:id", name: "jobdetails", component: JobDetails },
   { path: "/mock", name: "MockInterview", component: MockInterview },
-  { path: "/prepinstructions", name: "PrepInstructions", component: PrepAiInstructions },
+  { path: "/prepinstructions/:id", name: "PrepInstructions", component: PrepAiInstructions },
   { path: "/prepquestions", name: "PrepQuestions", component: PrepAIQuestions },
   {
     path: "/studentprofile",

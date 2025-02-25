@@ -7,7 +7,7 @@
     </p>
 
     <v-row class="d-flex justify-space-between mt-4">
-      <v-col cols="12" sm="4">
+      <v-col cols="12" sm="5">
         <v-img src="@/Images/interview.png" width="100%" height="100%"></v-img>
       </v-col>
       <v-col cols="12" sm="7" class="d-flex flex-column" align-self="center">
@@ -28,9 +28,9 @@
         </v-sheet>
       </v-col>
     </v-row>
-    <h1 class="text-h5 font-weight-bold text-primary mb-5 mt-5 text-center">We hope this will be helpful in refining your interview skills and boosting your confidence!</h1>
+    <h1 class="text-h5 font-weight-bold text-primary mb-5 mt-10 text-center">We hope this will be helpful in refining your interview skills and boosting your confidence!</h1>
     <v-container class="d-flex justify-center align-center">
-  <v-btn class="bg-primary" size="x-large">START</v-btn>
+  <v-btn class="bg-primary" size="x-large">START PREPARATION</v-btn>
 </v-container>
 
   </v-container>
