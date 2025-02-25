@@ -39,7 +39,7 @@ const routes = [
   { path: "/jobdetails/:id", name: "jobdetails", component: JobDetails },
   { path: "/mock", name: "MockInterview", component: MockInterview },
   { path: "/prepinstructions/:id", name: "PrepInstructions", component: PrepAiInstructions },
-  { path: "/prepquestions", name: "PrepQuestions", component: PrepAIQuestions },
+  { path: "/prepquestions/:id", name: "PrepQuestions", component: PrepAIQuestions },
   {
     path: "/studentprofile",
     name: "studentProfile",

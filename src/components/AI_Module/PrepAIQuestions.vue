@@ -17,7 +17,7 @@
                 </v-row>
             </v-col>
             <v-col cols="12">
-                <v-row class="d-flex justify-center mb-5">
+                <v-row class="d-flex justify-center">
                     <v-col cols="1">
                         <v-img src="@/Images/Profile-Picture.svg"></v-img>
                     </v-col>
@@ -29,22 +29,22 @@
                 </v-row>
             </v-col>
         </v-row>
-
-        <v-pagination v-model="page" :length="totalPages" :total-visible="5" active-color="primary">
+        <v-pagination v-model="page" :length="totalPages" :total-visible="5" active-color="primary" class="mt-4">
         </v-pagination>
 
         <v-row class="mt-4 justify-center">
             <!-- Previous Button -->
-            <v-col cols="auto">
-                <v-btn class="bg-primary" size="large" @click="prevPage" :disabled="page === 1">
+            <v-col cols="2">
+                <v-btn class="bg-primary" size="large" @click="prevPage" :disabled="page === 1" block>
                     Previous
                 </v-btn>
             </v-col>
             <!-- Next Button -->
-            <v-col cols="auto">
-                <v-btn class="bg-primary" size="large" @click="validateAndNextPage" :disabled="page === totalPages">
+            <v-col cols="2">
+                <v-btn class="bg-primary" size="large" @click="validateAndNextPage" block v-if="page!=6">
                     Next
                 </v-btn>
+                <v-btn class="bg-primary" size="large" type="submit" v-if="page==6" block>SUBMIT</v-btn>
             </v-col>
         </v-row>
     </v-container>

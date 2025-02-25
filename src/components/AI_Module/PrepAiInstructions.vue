@@ -30,7 +30,7 @@
     </v-row>
     <h1 class="text-h5 font-weight-bold text-primary mb-5 mt-10 text-center">We hope this will be helpful in refining your interview skills and boosting your confidence!</h1>
     <v-container class="d-flex justify-center align-center">
-  <v-btn class="bg-primary" size="x-large">START PREPARATION</v-btn>
+  <v-btn class="bg-primary" size="x-large" @click="startskilltest">START PREPARATION</v-btn>
 </v-container>
 
   </v-container>
@@ -41,5 +41,11 @@ export default {
   components: {
     "nav-bar": Nav,
   },
+  methods:{
+    startskilltest(){
+      const skillid=this.$route.params.id
+      this.$router.push({ name: "PrepQuestions", params: { id: skillid } });
+    }
+  }
 };
 </script>
