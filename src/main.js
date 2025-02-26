@@ -21,6 +21,7 @@ import SplashScreen from "./components/BaseComponents/SplashScreen.vue";
 import MockInterview from "./components/AI_Module/MockInterview.vue";
 import PrepAiInstructions from "./components/AI_Module/PrepAiInstructions.vue";
 import PrepAIQuestions from "./components/AI_Module/PrepAIQuestions.vue";
+import PrepAIResult from "./components/AI_Module/PrepAIResult.vue";
 //axios setup
 import axios from "axios";
 
@@ -40,6 +41,7 @@ const routes = [
   { path: "/mock", name: "MockInterview", component: MockInterview },
   { path: "/prepinstructions/:id", name: "PrepInstructions", component: PrepAiInstructions },
   { path: "/prepquestions/:id", name: "PrepQuestions", component: PrepAIQuestions },
+  { path: "/resultpage", name: "PrepAIResult", component: PrepAIResult },
   {
     path: "/studentprofile",
     name: "studentProfile",
