@@ -109,15 +109,24 @@ export default {
                     `https://tnp-portal-backend-tpx5.onrender.com/api/v1/skills/${this.skillid}/questions`
                 );
                 this.techQuestions = response.data.questions;
-                this.submitresponse = this.techQuestions.map(q => ({ question: q.question, answer: "" }));
-                console.log(this.submitresponse)
+                this.submitresponse = this.techQuestions.map(q => ({ question: q.question, answer: "",difficulty:q.difficulty }));
                 console.log("Fetched Questions:", this.techQuestions);
             } catch (err) {
                 console.error("Error fetching questions:", err);
             }
         },
-        submitAnswers() {
-            console.log("Submitted Answers:", this.submitresponse);
+        async submitAnswers() {
+            try {
+                const response = await axios.post(
+                    `https://tnp-portal-backend-tpx5.onrender.com/api/v1/skills/${this.skillid}/evaluations`,this.submitresponse
+                );
+                this.techQuestions = response.data.questions;
+                this.submitresponse = this.techQuestions.map(q => ({ question: q.question, answer: "",difficulty:q.difficulty }));
+                console.log("Fetched Questions:", this.techQuestions);
+            } catch (err) {
+                console.error("Error fetching questions:", err);
+            }
+            this.$router.push('')
         }
     }
 };
