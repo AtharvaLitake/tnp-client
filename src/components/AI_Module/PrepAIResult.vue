@@ -8,11 +8,11 @@
             <h1 class="text-h6 font-weight-bold text-primary mb-1">
               Your Score is
             </h1>
-            <h1 class="text-h1 font-weight-bold text-primary mb-3 mt-1">8.1</h1>
+            <h1 class="text-h1 font-weight-bold text-primary mb-3 mt-1">{{ testResults.overall_rating }}</h1>
             <h4 class="text-h5 font-weight-bold text-primary mb-3">of 10</h4>
             <h1
-              v-if="score < 7"
-              class="text-h6 font-weight-bold text-rror mb-1">
+              v-if="testResults.overall_rating < 7"
+              class="text-h6 font-weight-bold mb-1">
               You need improvement.
             </h1>
             <h1 v-else class="text-h6 font-weight-bold text-primary mb-1">
@@ -29,13 +29,13 @@
               Questions
             </h1>
             <v-sheet
-              v-for="(question, index) in questions"
+              v-for="(question, index) in bestAnswer"
               :key="index"
               class="pa-4 mb-3 rounded-lg"
               outlined
             >
               <h2 class="text-h6 font-weight-bold text-primary">
-                Question {{ index + 1 }}. {{ question.title }}
+                Question {{ index + 1 }}. {{ question.question }}
               </h2>
 
               <div class="d-flex align-center mt-2">
@@ -45,7 +45,7 @@
                   >Rating for your answer:</span
                 >
                 <h4 class="text-h7" style="color: rgba(8, 30, 127, 0.6)">
-                  8/10
+                  {{ question.rating }}/10
                 </h4>
               </div>
 
@@ -59,7 +59,7 @@
                     </div>
                   </v-expansion-panel-title>
                   <v-expansion-panel-text class="text-primary">
-                    {{ question.answer }}
+                    {{ question.correct_answer }}
                   </v-expansion-panel-text>
                 </v-expansion-panel>
               </v-expansion-panels>
@@ -96,22 +96,8 @@ export default {
   },
   data() {
     return {
-      questions: [
-        {
-          title: "What is React?",
-          answer: "React is a JavaScript library for building user interfaces.",
-        },
-        {
-          title: "What is Vue.js?",
-          answer:
-            "Vue.js is a progressive JavaScript framework for building UIs.",
-        },
-        {
-          title: "What is a REST API?",
-          answer:
-            "A REST API allows communication between systems using HTTP methods.",
-        },
-      ],
+      testResults:[],
+      bestAnswer: [],
       improvementTopics: [
         "Data Structures & Algorithms",
         "System Design",
@@ -121,6 +107,13 @@ export default {
       ],
     };
   },
+  mounted()
+  {
+    this.testResults=localStorage.getItem("Results")
+    this.testResults=JSON.parse(this.testResults)
+    this.bestAnswer=this.testResults.evaluations,
+    this.improvementTopics=this.testResults.topics_to_improve
+  }
 };
 </script>
 <style scoped>

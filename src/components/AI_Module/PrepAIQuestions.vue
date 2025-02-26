@@ -116,16 +116,18 @@ export default {
             }
         },
         async submitAnswers() {
+            const answers={
+                questions:this.submitresponse
+            }
             try {
                 const response = await axios.post(
-                    `https://tnp-portal-backend-tpx5.onrender.com/api/v1/skills/${this.skillid}/evaluations`,this.submitresponse
+                    `https://tnp-portal-backend-tpx5.onrender.com/api/v1/skills/${this.skillid}/evaluations`,answers
                 );
-                localStorage.setItem("Results",response.data.evaluations)
-                console.log("Fetched Questions:", this.techQuestions);
+                localStorage.setItem("Results",JSON.stringify(response.data))
             } catch (err) {
-                console.error("Error fetching questions:", err);
+                console.error("Error In Submitting Test", err);
             }
-            //this.$router.push('/')
+            this.$router.push('/resultpage')
         }
     }
 };
