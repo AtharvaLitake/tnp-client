@@ -120,13 +120,12 @@ export default {
                 const response = await axios.post(
                     `https://tnp-portal-backend-tpx5.onrender.com/api/v1/skills/${this.skillid}/evaluations`,this.submitresponse
                 );
-                this.techQuestions = response.data.questions;
-                this.submitresponse = this.techQuestions.map(q => ({ question: q.question, answer: "",difficulty:q.difficulty }));
+                localStorage.setItem("Results",response.data.evaluations)
                 console.log("Fetched Questions:", this.techQuestions);
             } catch (err) {
                 console.error("Error fetching questions:", err);
             }
-            this.$router.push('')
+            //this.$router.push('/')
         }
     }
 };
