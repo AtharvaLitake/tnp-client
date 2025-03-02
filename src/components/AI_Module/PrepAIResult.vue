@@ -12,7 +12,7 @@
             <h4 class="text-h5 font-weight-bold text-primary mb-3">of 10</h4>
             <h1
               v-if="testResults.overall_rating < 7"
-              class="text-h6 font-weight-bold mb-1">
+              class="text-h6 font-weight-bold mb-1 text-primary">
               You need improvement.
             </h1>
             <h1 v-else class="text-h6 font-weight-bold text-primary mb-1">

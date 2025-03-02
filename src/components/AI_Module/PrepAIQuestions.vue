@@ -1,5 +1,9 @@
 <template>
     <nav-bar></nav-bar>
+    <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loading">
+        <v-progress-circular model-value="20" :size="62" indeterminate
+            color="primary"></v-progress-circular>
+    </div>
     <v-container class="px-15 mt-15" v-if="paginatedQuestions.length > 0">
         <h1 class="text-h5 font-weight-bold text-primary mb-5">Prep AI Training Module</h1>
         <v-form @submit.prevent="submitAnswers">
@@ -49,7 +53,7 @@
             <!-- Navigation Buttons -->
             <v-row class="mt-4 justify-center">
                 <v-col cols="2">
-                    <v-btn class="bg-primary" size="large" @click="prevPage" :disabled="page === 1" block>
+                    <v-btn class="bg-primary" size="large" @click="prevPage" :disabled="page === 1 && loader" block>
                         Previous
                     </v-btn>
                 </v-col>
@@ -57,7 +61,7 @@
                     <v-btn class="bg-primary" size="large" @click="validateAndNextPage" block v-if="page !== totalPages">
                         Next
                     </v-btn>
-                    <v-btn class="bg-primary" size="large" type="submit" v-if="page === totalPages" block>
+                    <v-btn class="bg-primary" size="large" type="submit" v-if="page === totalPages" block :loading="loader">
                         SUBMIT
                     </v-btn>
                 </v-col>
@@ -79,7 +83,9 @@ export default {
             page: 1,
             skillid: '',
             techQuestions: [],
-            submitresponse: []
+            submitresponse: [],
+            loading:false,
+            loader:false
         };
     },
     computed: {
@@ -104,6 +110,7 @@ export default {
             if (this.page > 1) this.page--;
         },
         async fetchQuestions() {
+            this.loading=true
             try {
                 const response = await axios.get(
                     `https://tnp-portal-backend-tpx5.onrender.com/api/v1/skills/${this.skillid}/questions`
@@ -113,9 +120,12 @@ export default {
                 console.log("Fetched Questions:", this.techQuestions);
             } catch (err) {
                 console.error("Error fetching questions:", err);
+            }finally{
+                this.loading=false
             }
         },
         async submitAnswers() {
+            this.loader=true
             const answers={
                 questions:this.submitresponse
             }
@@ -132,3 +142,9 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.custom_loader {
+  height: 90vh;
+}
+</style>

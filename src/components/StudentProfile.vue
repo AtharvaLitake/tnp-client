@@ -1,9 +1,6 @@
 <template>
     <nav-bar></nav-bar>
-    <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loader">
-        <v-progress-circular model-value="20" :size="62" indeterminate
-            color="primary"></v-progress-circular>
-    </div>
+
     <v-container class="px-15 mt-15">
         <v-card class="pa-3 px-10">
             <div v-if="!loader">
