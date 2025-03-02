@@ -1074,7 +1074,7 @@
 
           <v-row class="d-flex justify-start mt-4 mr-1">
             <v-col cols="3">
-            <v-btn class="bg-primary " size="x-large" type="submit" block>
+            <v-btn class="bg-primary " size="x-large" type="submit" block :loading="loader">
               Submit
             </v-btn></v-col>
         </v-row>
@@ -1130,6 +1130,7 @@ export default {
 
   data() {
     return {
+      loader:false,
       showPopup: false,
       show2: false,
       page: 1,
@@ -1222,6 +1223,7 @@ export default {
     },
 
     async submitForm() {
+      this.loader=true,
       const form = this.$refs.form;
       if (!form) return;
 
@@ -1238,6 +1240,7 @@ export default {
             textAlign: "center",
           },
         });
+        this.loader=false,
         return;
       }
 
@@ -1272,6 +1275,7 @@ export default {
             textAlign: "center",
           },
         });
+        this.$router.push('/')
       } catch (error) {
         console.error("Error uploading:", error);
       }
