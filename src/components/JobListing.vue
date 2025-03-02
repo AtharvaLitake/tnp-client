@@ -2,11 +2,38 @@
   <nav-bar></nav-bar>
   <v-container class="px-15 mt-15">
     <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loading">
-      <v-progress-circular model-value="20" :size="62" indeterminate color="primary"></v-progress-circular>
+      <v-progress-circular :size="62" indeterminate color="primary"></v-progress-circular>
     </div>
+    <v-row class="mb-2 mt-2" v-if="!loading">
+      <v-col cols="9">
+        <v-text-field 
+          v-model="searchQuery" 
+          class="text-primary"
+          color="primary"
+          append-inner-icon="mdi-magnify"
+          label="Search by company or role" 
+          variant="outlined" 
+          dense 
+          clearable
+        ></v-text-field>
+      </v-col>
+      <v-col cols="3">
+        <v-text-field 
+          v-model.number="minCTC"
+          class="text-primary"
+          color="primary" 
+          label="Min CTC (LPA)" 
+          variant="outlined" 
+          dense 
+          clearable
+          type="number"
+        ></v-text-field>
+      </v-col>
+    </v-row>
 
+    <!-- Job Listings -->
     <v-row no-gutters class="d-flex justify-space-between">
-      <v-col cols="5" v-for="list in joblists" :key="list.id">
+      <v-col cols="5" v-for="list in filteredJobs" :key="list.id">
         <v-card style="min-height: 180px" class="mt-4 mb-6">
           <v-row class="border-b-sm">
             <v-col cols="3">
@@ -24,13 +51,11 @@
           <div class="px-3 pt-4 pb-2 custom_colors text-subtitle-1 ma-0">
             <p>Role : {{ list.jobRole }}</p>
             <p>Job Location : {{ list.jobLocation }}</p>
-            <p>
-              Deadline: {{ list.formatDate }}
-            </p>
+            <p>Deadline: {{ list.formatDate }}</p>
           </div>
           <v-row class="px-3 pb-0 mb-0">
             <v-col cols="7" class="custom_colors text-subtitle-2 ma-0">
-              <p>Application Deadlines Won't Get extended</p>
+              <p>Application Deadlines Won't Get Extended</p>
             </v-col>
             <v-col cols="5">
               <v-btn class="bg-primary" style="height: 40px; width: 100%" @click="viewdetails(list.id)">Details</v-btn>
@@ -39,6 +64,9 @@
         </v-card>
       </v-col>
     </v-row>
+    <div v-if="!loading">
+      <p v-if="filteredJobs.length === 0" class="text-center text-primary">No jobs found.</p>
+    </div>
   </v-container>
   <app-footer></app-footer>
 </template>
@@ -48,17 +76,32 @@ import axios from "axios";
 import Nav from "@/components/BaseComponents/NavBar.vue";
 import Footer from "@/components/BaseComponents/Footer.vue";
 import dayjs from "dayjs";
+
 export default {
   components: {
-    'nav-bar': Nav,
-    'app-footer': Footer
+    "nav-bar": Nav,
+    "app-footer": Footer,
   },
   data() {
     return {
       joblists: [],
       loading: true,
-      formatteddate: '',
+      searchQuery: "",
+      minCTC: null,
     };
+  },
+  computed: {
+    filteredJobs() {
+      return this.joblists.filter((job) => {
+        const search = this.searchQuery.toLowerCase();
+        const jobCTC = parseFloat(job.companyPackage);
+        return (
+          (job.companyName.toLowerCase().includes(search) ||
+            job.jobRole.toLowerCase().includes(search)) &&
+          (this.minCTC === null || jobCTC >= this.minCTC)
+        );
+      });
+    },
   },
   mounted() {
     this.fetchjobs();
@@ -66,18 +109,13 @@ export default {
   methods: {
     async fetchjobs() {
       try {
-        const response = await axios.get(
-          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/active"
-        );
-        this.joblists = response.data.jobs;
-        this.joblists = this.joblists.map(job => ({
+        const response = await axios.get("https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/active");
+        this.joblists = response.data.jobs.map(job => ({
           ...job,
-          formatDate: job.applicationDeadline
-            ? dayjs(job.applicationDeadline).format('DD/MM/YYYY')
-            : null
+          formatDate: job.applicationDeadline ? dayjs(job.applicationDeadline).format("DD/MM/YYYY") : null
         }));
       } catch (err) {
-        console.log(err);
+        console.error(err);
       } finally {
         this.loading = false;
       }
@@ -93,7 +131,6 @@ export default {
 .custom_colors {
   color: rgba(8, 30, 127, 0.6);
 }
-
 .custom_loader {
   height: 90vh;
 }
