@@ -1223,7 +1223,7 @@ export default {
     },
 
     async submitForm() {
-      this.loader=true,
+      this.loader=true
       const form = this.$refs.form;
       if (!form) return;
 
@@ -1240,7 +1240,7 @@ export default {
             textAlign: "center",
           },
         });
-        this.loader=false,
+        this.loader=false
         return;
       }
 
