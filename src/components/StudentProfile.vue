@@ -86,7 +86,7 @@
                                 class="custom-style">{{ studentDetails.elqScore }}</span></p>
                     </v-col>
                     <v-col cols="6">
-                        <p class="text-body-1  font-weight-regular text-primary mb-2">Automata Score - <span
+                        <p class="text-body-1  font-weight-regular text-primary mb-2 ml-10">Automata Score - <span
                                 class="custom-style">{{
                                     studentDetails.automataScore }}</span></p>
                     </v-col>
