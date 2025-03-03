@@ -8,11 +8,11 @@
           <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/img.png"
+              src="@/Images/male1.jpg"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
-              Atharva Litake
+              Atharva Desai
             </v-card-subtitle>
             <v-card-title class="text-white" style="font-size: 22px;">
               Phonepe
@@ -24,11 +24,11 @@
         <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/img.png"
+              src="@/Images/male2.jpg"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
-              Atharva Litake
+              Aniket Hend
             </v-card-subtitle>
             <v-card-title class="text-white" style="font-size: 22px;">
               Phonepe
@@ -40,14 +40,14 @@
         <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/img.png"
+              src="@/Images/male3.jpg"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
-              Atharva Litake
+               Rajesh Darade
             </v-card-subtitle>
             <v-card-title class="text-white" style="font-size: 22px;">
-              Phonepe
+              Arista
             </v-card-title>
           </v-card>
         </v-col>
@@ -55,14 +55,14 @@
         <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/img.png"
+              src="@/Images/female.jpg"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
-              Atharva Litake
+              Riya Sharma
             </v-card-subtitle>
             <v-card-title class="text-white" style="font-size: 22px;">
-              Phonepe
+              City Bank
             </v-card-title>
           </v-card>
         </v-col>

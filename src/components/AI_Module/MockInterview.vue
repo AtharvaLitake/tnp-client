@@ -83,7 +83,7 @@ export default {
 }
 
 .custom-card:hover {
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
 }
 
 .image {

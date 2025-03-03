@@ -1,7 +1,9 @@
 <template>
   <v-container class="px-15 px-xs-0">
-    <h1 class="text-h5 font-weight-bold text-primary mb-5">Our Successful Students</h1>
-    
+    <h1 class="text-h5 font-weight-bold text-primary mb-5">
+      Our Successful Students
+    </h1>
+
     <v-carousel
       height="auto"
       show-arrows="hover"
@@ -23,9 +25,9 @@
                   <v-img
                     :src="company.image"
                     class="circular-image"
-                    height="150"
-                    width="150"
-                    contain
+                    width="100"
+                    height="100"
+                    cover
                   ></v-img>
                 </div>
 
@@ -35,7 +37,9 @@
                     company.title
                   }}</v-card-title>
                   <v-card-text>
-                    <p class="subtitle-text custom_colors">{{ company.subtitle }}</p>
+                    <p class="subtitle-text custom_colors">
+                      {{ company.subtitle }}
+                    </p>
                   </v-card-text>
 
                   <!-- Star Rating -->
@@ -55,62 +59,61 @@
       </v-carousel-item>
     </v-carousel>
   </v-container>
-  <br>
-  
+  <br />
 </template>
   
   <script>
 export default {
-    name:"ReviewSection",
+  name: "ReviewSection",
   data() {
     return {
       companies: [
         {
           id: 1,
-          title: "Apurva Kulkarni",
+          title: "Riya Sharma",
           subtitle:
             "Provides great opportunities with top companies. The TNP team was supportive throughout, ensuring smooth coordination and timely updates. Overall, a great experience that helped kickstart my career!",
-          image: require("@/Images/girlicon.png"),
+          image: require("@/Images/female.jpg"),
           rating: 4.5,
         },
         {
           id: 2,
-          title: "Atharva Litake",
+          title: "Atharva Desai",
           subtitle:
-            "Provides great opportunities with top companies. The TNP team was supportive throughout, ensuring smooth coordination and timely updates. Overall, a great experience that helped kickstart my career!",
-          image:  require("@/Images/boy.png"),
+            "Amazing placement opportunities with top-tier companies! The TNP cell was proactive and ensured a hassle-free process with clear communication. I'm grateful for their support in helping me secure a great start to my professional journey",
+          image: require("@/Images/male1.jpg"),
           rating: 3.8,
         },
         {
           id: 3,
-          title: "Atharva Litake",
+          title: "Aniket Hend",
           subtitle:
-            "Provides great opportunities with top companies. The TNP team was supportive throughout, ensuring smooth coordination and timely updates. Overall, a great experience that helped kickstart my career!",
-          image:  require("@/Images/boy.png"),
+            "The entire placement process was well-managed, with a wide range of opportunities to choose from. The TNP team was always available to guide and assist, making the journey smooth and stress-free.",
+          image: require("@/Images/male2.jpg"),
           rating: 3.8,
         },
         {
           id: 4,
           title: "Apurva Kulkarni",
           subtitle:
-            "Provides great opportunities with top companies. The TNP team was supportive throughout, ensuring smooth coordination and timely updates. Overall, a great experience that helped kickstart my career!",
-          image:  require("@/Images/girlicon.png"),
+            "Highly professional and well-coordinated placement process! The TNP team ensured timely updates and seamless execution, connecting students with some of the best recruiters.",
+          image: require("@/Images/female.jpg"),
           rating: 3.8,
         },
         {
           id: 5,
-          title: "Atharva Litake",
+          title: "Raj Darade",
           subtitle:
-            "Provides great opportunities with top companies. The TNP team was supportive throughout, ensuring smooth coordination and timely updates. Overall, a great experience that helped kickstart my career!",
-          image:  require("@/Images/boy.png"),
+            "From preparation to final placements, the TNP team provided continuous support and guidance. The process was transparent, and the opportunities were excellent. I'm truly grateful for this experience, which helped me step into the corporate world with confidence!",
+          image: require("@/Images/male3.jpg"),
           rating: 3.8,
         },
         {
           id: 6,
-          title: "Atharva Litake",
+          title: "Atharva Desai",
           subtitle:
-            "Provides great opportunities with top companies. The TNP team was supportive throughout, ensuring smooth coordination and timely updates. Overall, a great experience that helped kickstart my career!",
-          image:  require("@/Images/girlicon.png"),
+            "A well-organized placement drive with outstanding opportunities from top companies. The support from the TNP cell was commendable, making the process smooth and efficient. This experience has been a key stepping stone in my career journey!",
+          image: require("@/Images/male1.jpg"),
           rating: 3.8,
         },
       ],
@@ -130,7 +133,7 @@ export default {
   
 <style scoped>
 .custom-card {
-  background-color: transparent !important; 
+  background-color: transparent !important;
   color: black !important;
   padding: 10px;
   border-radius: 10px;
@@ -155,15 +158,13 @@ export default {
 }
 
 .txt {
-  
   font-size: 18px !important;
   font-style: italic;
 }
 
-
 .image-container {
-  width: 180px; 
-  height: 180px; 
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: flex-start;
   align-items: left;
@@ -172,10 +173,9 @@ export default {
 .circular-image {
   border-radius: 50%;
   object-fit: cover;
-  
 }
-.custom_colors{
-    color: rgba(8, 30, 127, 0.6);
+.custom_colors {
+  color: rgba(8, 30, 127, 0.6);
 }
 </style>
   

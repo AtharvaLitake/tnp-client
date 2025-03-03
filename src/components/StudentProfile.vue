@@ -6,7 +6,7 @@
             <div v-if="!loader">
                 <v-row class="d-flex mb-5 mt-2" no-gutters>
                     <v-col cols="2">
-                        <v-img src="@/Images/Profile-Picture.svg" width="130"></v-img>
+                        <v-img class="circular-image" src="@/Images/Profile-Picture.svg" width="130"></v-img>
                     </v-col>
                     <v-col cols="9">
                         <h1 class="text-h5 font-weight-bold text-primary mb-2">{{ studentDetails.fullName }}</h1>
@@ -181,4 +181,5 @@ export default {
 .custom_loader {
     height: 90vh;
 }
+
 </style>
