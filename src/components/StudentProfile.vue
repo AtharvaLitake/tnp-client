@@ -156,7 +156,7 @@ export default {
                         text: "SGPA",
                         font: { color: "#081e7f" },
                     },
-                    range:[6,10.5],
+                    range:[0,10.5],
                     titlefont: { color: "#081e7f" },
                     tickfont: { color: "#081e7f" }
                 },
