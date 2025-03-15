@@ -15,7 +15,8 @@
       <v-btn text class="nav-link" to="/jobs">JOBS</v-btn>
       <v-btn text class="nav-link" to="/applications">APPLICATIONS</v-btn>
       <v-btn text class="nav-link" to="/studentprofile">PROFILE</v-btn>
-      <v-btn text class="nav-link" to="/mock">Prep AI</v-btn>
+      <v-btn text class="nav-link" to="/resultpage">RESULTS</v-btn>
+      <v-btn text class="nav-link" to="/mock">PREP AI</v-btn>
       <v-btn text class="nav-link" to="/help">HELP</v-btn>
     </template>
 
@@ -91,14 +92,12 @@ export default {
 </script>
 
 <style scoped>
-/* Remove unwanted space below navbar */
 body,
 .v-application {
   margin: 0;
   padding: 0;
 }
 
-/* Navbar Styling */
 .navbar {
   position: fixed;
   top: 0;
@@ -107,7 +106,6 @@ body,
   box-shadow: none;
 }
 
-/* Align the logo and title properly */
 .logo-container {
   display: flex;
   align-items: center;
@@ -177,13 +175,9 @@ body,
   width: 100%;
   text-align: center;
   margin: 8px 0;
-  background: transparent;
-  /* Removes white strip */
   transition: all 0.3s ease-in-out;
   box-shadow: none !important;
-  /* Removes any unwanted shadows */
   border: none;
-  /* Ensures no border effect */
 }
 
 .mobile-link:hover {

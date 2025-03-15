@@ -137,7 +137,7 @@ export default {
             } catch (err) {
                 console.error("Error In Submitting Test", err);
             }
-            this.$router.push('/resultpage')
+            this.$router.push('/prepresultpage')
         }
     }
 };
