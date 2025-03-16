@@ -76,6 +76,8 @@ import axios from "axios";
 import Nav from "@/components/BaseComponents/NavBar.vue";
 import Footer from "@/components/BaseComponents/Footer.vue";
 import dayjs from "dayjs";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 
 export default {
   components: {
@@ -115,6 +117,17 @@ export default {
           formatDate: job.applicationDeadline ? dayjs(job.applicationDeadline).format("DD/MM/YYYY") : null
         }));
       } catch (err) {
+        toast.error("Failed to load the jobs. Please try again later.", {
+            position: "top-center",
+            autoClose: 4000,
+            style: {
+              width: "500px",
+              height: "200px",
+              fontSize: "16px",
+              padding: "10px",
+              textAlign: "center",
+            },
+          });
         console.error(err);
       } finally {
         this.loading = false;

@@ -79,7 +79,7 @@ router.beforeEach((to, from, next) => {
     to.path !== "/lock" &&
     to.path !== "/login" &&
     to.path !== "/register" &&
-    to.path !== "/home"
+    to.path !== "/home" && to.path !== "/wait"
   ) {
     to.meta.requiresAuth = true;
   }

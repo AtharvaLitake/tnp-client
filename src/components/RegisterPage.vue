@@ -459,6 +459,9 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 Board of education of 12th
               </h4>
+              <p class="custom_colors text-h7">
+               Diploma students select None here.
+              </p>
               <v-radio-group v-model="formData.board_12th">
                 <v-radio
                   label="HSC"
@@ -474,8 +477,12 @@
                   label="Other"
                   class="custom_colors text-h7"
                   value="Other"
-                ></v-radio
-              ></v-radio-group>
+                ></v-radio>
+              <v-radio
+                  label="None"
+                  class="custom_colors text-h7"
+                  value="None"
+                ></v-radio></v-radio-group>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Year of passing 12 th
               </h4>
@@ -989,7 +996,7 @@
               <h4 class="text-h7 font-weight-bold text-primary mb-0">
                 Enter ELQ Score
               </h4>
-              <p class="custom_colors text-h7">Enter correct score. If not not given amcat then enter -1 here.</p>
+              <p class="custom_colors text-h7">Enter correct score. If not given amcat then enter -1 here.</p>
               <v-text-field
                 v-model="formData.elq_score"
                 class="custom_textfield"
@@ -1002,7 +1009,7 @@
               <h4 class="text-h7 font-weight-bold text-primary mb-0">
                 Enter Automata Score
               </h4>
-              <p class="custom_colors text-h7">Enter correct score. If not not given amcat then enter -1 here.</p>
+              <p class="custom_colors text-h7">Enter correct score. If not given amcat then enter -1 here.</p>
               <v-text-field
                 v-model="formData.automata_score"
                 class="custom_textfield"
@@ -1307,7 +1314,7 @@ export default {
             textAlign: "center",
           },
         });
-        this.$router.push("/");
+        this.$router.push("/wait");
       } catch (error) {
         console.error("Error uploading:", error);
       }
