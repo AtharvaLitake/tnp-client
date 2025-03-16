@@ -309,9 +309,13 @@
                 :rules="[
                   (v) => !!v || 'PRN is required',
                   (v) =>
-                    /^[A-Za-z0-9]{9}$/.test(v) ||
+                    /^[A-Z0-9]{9}$/.test(v) ||
                     'PRN must be exactly 9 characters',
                 ]"
+                 @input="
+                  formData.university_prn =
+                    formData.university_prn.toUpperCase()
+                "
               ></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 PICT Registration ID *
@@ -327,7 +331,11 @@
                 placeholder="E.g. I2K19122868"
                 variant="underlined"
                 color="primary"
-                :rules="[(v) => !!v || 'Registration ID is required']"
+                :rules="[(v) => !!v || 'This is required field']"
+                @input="
+                  formData.pict_registration_id =
+                    formData.pict_registration_id.toUpperCase()
+                "
               ></v-text-field>
             </v-card>
           </v-col>
@@ -366,8 +374,13 @@
                   label="ICSE"
                   class="custom_colors text-h7"
                   value="ICSE"
-                ></v-radio
-              ></v-radio-group>
+                ></v-radio>
+                <v-radio
+                  label="Other"
+                  class="custom_colors text-h7"
+                  value="Other"
+                ></v-radio>
+              </v-radio-group>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Year of passing 10 th
               </h4>
@@ -399,7 +412,7 @@
                 Reason of Gap
               </h4>
               <p class="custom_colors text-h7">
-                Put NA (without quotes) if you don't have a gap
+                Put N/A (without quotes) if you don't have a gap
               </p>
               <v-text-field
                 v-model="formData.reason_of_gap_after_10th"
@@ -435,7 +448,7 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 12th class percentage
               </h4>
-              <p class="custom_colors text-h7">Diploma students enter 0</p>
+              <p class="custom_colors text-h7">Diploma students enter -1 here.</p>
               <v-text-field
                 v-model="formData.percentage_12th"
                 class="custom_textfield"
@@ -448,7 +461,7 @@
               </h4>
               <v-radio-group v-model="formData.board_12th">
                 <v-radio
-                  label="SSC"
+                  label="HSC"
                   class="custom_colors text-h7"
                   value="SSC"
                 ></v-radio>
@@ -458,14 +471,17 @@
                   value="CBSE"
                 ></v-radio>
                 <v-radio
-                  label="ICSE"
+                  label="Other"
                   class="custom_colors text-h7"
-                  value="ICSE"
+                  value="Other"
                 ></v-radio
               ></v-radio-group>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Year of passing 12 th
               </h4>
+              <p class="custom_colors text-h7">
+               Diploma students enter -1 here.
+              </p>
               <v-text-field
                 v-model="formData.passing_year_12th"
                 type="number"
@@ -492,7 +508,7 @@
                 Reason of Gap
               </h4>
               <p class="custom_colors text-h7">
-                Put NA (without quotes) if you don't have a gap
+                Put N/A (without quotes) if you don't have a gap
               </p>
               <v-text-field
                 v-model="formData.reason_of_gap_after_12th"
@@ -509,6 +525,9 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 Diploma percentage
               </h4>
+              <p class="custom_colors text-h7">
+               12th students enter -1 here.
+              </p>
               <v-text-field
                 v-model="formData.percentage_diploma"
                 type="number"
@@ -520,6 +539,9 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 University of Diploma
               </h4>
+              <p class="custom_colors text-h7">
+               12th students enter N/A here.
+              </p>
               <v-text-field
                 v-model="formData.university_of_diploma"
                 class="custom_textfield"
@@ -530,6 +552,9 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 Year of passing Diploma
               </h4>
+              <p class="custom_colors text-h7">
+               12th students enter -1 here.
+              </p>
               <v-text-field
                 v-model="formData.passing_year_diploma"
                 type="number"
@@ -556,7 +581,7 @@
                 Reason of Gap
               </h4>
               <p class="custom_colors text-h7">
-                Put NA (without quotes) if you don't have a gap
+                Put N/A (without quotes) if you don't have a gap
               </p>
               <v-text-field
                 v-model="formData.reason_of_gap_after_diploma"
@@ -574,7 +599,7 @@
                 MH-CET Percentile
               </h4>
               <p class="custom_colors text-h7">
-                (Correct upto 2 decimal points Ex: 96.69). Put 0 (zero) if you
+                (Correct upto 2 decimal points Ex: 96.69). Put -1 (minus one) if you
                 haven't given MH-CET. Do NOT put % sign
               </p>
               <v-text-field
@@ -590,7 +615,7 @@
                 JEE Mains Percentile
               </h4>
               <p class="custom_colors text-h7">
-                (Correct upto 2 decimal points Ex: 96.69). Put 0 (zero) if you
+                (Correct upto 2 decimal points Ex: 96.69). Put -1 (minus one) if you
                 haven't given JEE. Do NOT put % sign
               </p>
               <v-text-field
@@ -663,13 +688,13 @@
           <v-col cols="12">
             <v-card class="text-justify pa-5">
               <h4 class="text-h7 font-weight-bold text-primary">
-                If you HAVE ACTIVE backlog in any semester, enter 0 for that
+                If you HAVE ACTIVE backlog in any semester, enter -1 for that
                 semester
               </h4>
               <h4 class="text-h7 font-weight-bold text-primary">
                 FE 1st sem SGPA *
               </h4>
-              <p class="custom_colors text-h7">Diploma people put 0 (zero)</p>
+              <p class="custom_colors text-h7">Diploma people put -1 here.</p>
               <v-text-field
                 v-model="formData.sgpa_fe_sem_1"
                 type="number"
@@ -681,7 +706,7 @@
               <h4 class="text-h7 font-weight-bold text-primary">
                 FE 2nd sem SGPA *
               </h4>
-              <p class="custom_colors text-h7">Diploma people put 0 (zero)</p>
+              <p class="custom_colors text-h7">Diploma people put -1 here.</p>
               <v-text-field
                 v-model="formData.sgpa_fe_sem_2"
                 type="number"
@@ -856,7 +881,7 @@
                 PAN Number *
               </h4>
               <p class="custom_colors text-h7">
-                If you don't have PAN Card, put NA (without quotes) and apply
+                If you don't have PAN Card, put N/A (without quotes) and apply
                 for PAN ASAP. If you applied and in process then also put NA
                 (without quotes)
               </p>
@@ -873,7 +898,7 @@
                 Passport Number *
               </h4>
               <p class="custom_colors text-h7">
-                If you don't have Passport, put NA (without quotes) and apply
+                If you don't have Passport, put N/A (without quotes) and apply
                 for PAN ASAP. If you applied and in process then also put NA
                 (without quotes)
               </p>
@@ -964,7 +989,7 @@
               <h4 class="text-h7 font-weight-bold text-primary mb-0">
                 Enter ELQ Score
               </h4>
-              <p class="custom_colors text-h7">Enter correct score </p>
+              <p class="custom_colors text-h7">Enter correct score. If not not given amcat then enter -1 here.</p>
               <v-text-field
                 v-model="formData.elq_score"
                 class="custom_textfield"
@@ -977,7 +1002,7 @@
               <h4 class="text-h7 font-weight-bold text-primary mb-0">
                 Enter Automata Score
               </h4>
-              <p class="custom_colors text-h7">Enter correct score</p>
+              <p class="custom_colors text-h7">Enter correct score. If not not given amcat then enter -1 here.</p>
               <v-text-field
                 v-model="formData.automata_score"
                 class="custom_textfield"
@@ -1074,10 +1099,17 @@
 
           <v-row class="d-flex justify-start mt-4 mr-1">
             <v-col cols="3">
-            <v-btn class="bg-primary " size="x-large" type="submit" block :loading="loader">
-              Submit
-            </v-btn></v-col>
-        </v-row>
+              <v-btn
+                class="bg-primary"
+                size="x-large"
+                type="submit"
+                block
+                :loading="loader"
+              >
+                Submit
+              </v-btn></v-col
+            >
+          </v-row>
         </v-row>
       </v-container>
     </v-form>
@@ -1130,7 +1162,7 @@ export default {
 
   data() {
     return {
-      loader:false,
+      loader: false,
       showPopup: false,
       show2: false,
       page: 1,
@@ -1188,8 +1220,8 @@ export default {
         amcat_result: null,
         be_receipt: null,
         password: "",
-        elq_score:null,
-        automata_score:null,
+        elq_score: null,
+        automata_score: null,
       },
     };
   },
@@ -1223,7 +1255,7 @@ export default {
     },
 
     async submitForm() {
-      this.loader=true
+      this.loader = true;
       const form = this.$refs.form;
       if (!form) return;
 
@@ -1240,7 +1272,7 @@ export default {
             textAlign: "center",
           },
         });
-        this.loader=false
+        this.loader = false;
         return;
       }
 
@@ -1275,7 +1307,7 @@ export default {
             textAlign: "center",
           },
         });
-        this.$router.push('/')
+        this.$router.push("/");
       } catch (error) {
         console.error("Error uploading:", error);
       }
