@@ -2,22 +2,12 @@
   <nav-bar></nav-bar>
   <v-container class="px-15 mt-15">
     <!-- Loader -->
-    <div
-      class="custom_loader d-flex flex-column justify-center align-center"
-      v-if="loading"
-    >
-      <v-progress-circular
-        :size="62"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
+    <div class="custom_loader d-flex flex-column justify-center align-center" v-if="loading">
+      <v-progress-circular :size="62" indeterminate color="primary"></v-progress-circular>
     </div>
     <h1 class="text-h5 font-weight-bold text-primary mb-2">Job Description</h1>
     <!-- Job Details -->
-    <v-card
-      v-if="jobDetails && Object.keys(jobDetails).length"
-      class="pa-1 no-extra-space"
-    >
+    <v-card v-if="jobDetails && Object.keys(jobDetails).length" class="pa-1 no-extra-space">
       <v-row align="center" class="mb-1">
         <v-col cols="2">
           <v-avatar size="80">
@@ -28,33 +18,24 @@
           <h1 class="text-primary font-weight-bold mb-3 ml-11">
             {{ jobDetails.companyName }}
           </h1>
-          <v-list-item-title class="custom-ctc ml-11"
-            ><strong>CTC:</strong> ₹{{
-              jobDetails.companyPackage
-            }}
-            LPA</v-list-item-title
-          >
+          <v-list-item-title class="custom-ctc ml-11"><strong>CTC:</strong> ₹{{
+            jobDetails.companyPackage
+          }}
+            LPA</v-list-item-title>
         </v-col>
         <v-col>
           <v-row justify="center">
-            <v-btn
-              class="mt-1 bg-primary"
-              size="x-large"
-              style="text-transform: none"
-              :disabled="jobDetails.hasApplied || !jobDetails.isEligible"
-              @click="applyCompany(jobDetails.id)"
-            >
+            <v-btn class="mt-1 bg-primary" size="x-large" style="text-transform: none"
+              :disabled="jobDetails.hasApplied || !jobDetails.isEligible" @click="applyCompany(jobDetails.id)">
               {{ buttonText }}
             </v-btn>
           </v-row>
-          <h3
-            style="
+          <h3 style="
               color: #081e7f;
               font-weight: bold;
               text-align: center;
               margin-top: 20px;
-            "
-          >
+            ">
             <strong>Application Deadline - </strong>{{ fomatteddate }}
           </h3>
         </v-col>
@@ -72,40 +53,26 @@
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Job Location </strong>
-                <span class="custom_colors"
-                  >- {{ jobDetails.jobLocation }}</span
-                >
+                <span class="custom_colors">- {{ jobDetails.jobLocation }}</span>
               </v-list-item-title>
             </v-list-item>
 
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Company Description </strong>
-                <p
-                  class="text-muted custom_colors company-desc"
-                  v-html="jobDetails.companyDesc"
-                ></p>
+                <p class="text-muted custom_colors company-desc" v-html="jobDetails.companyDesc"></p>
               </v-list-item-title>
             </v-list-item>
 
-            <v-btn
-              :href="jobDetails.companyWebsiteURL"
-              target="_blank"
-              color="primary"
-              class="ml-3 mt-3 mb-3"
-              style="text-transform: none"
-            >
-              Visit Company Website<v-icon class="ml-2" right
-                >mdi-open-in-new</v-icon
-              >
+            <v-btn @click="openCompanyWebsite(jobDetails.companyWebsiteURL)" color="primary" class="ml-3 mt-3 mb-3"
+              style="text-transform: none">
+              Visit Company Website<v-icon class="ml-2" right>mdi-open-in-new</v-icon>
             </v-btn>
 
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Dream Company </strong>
-                <span class="custom_colors"
-                  >- {{ jobDetails.dreamCompany }}</span
-                >
+                <span class="custom_colors">- {{ jobDetails.dreamCompany }}</span>
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -115,68 +82,37 @@
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Eligibility Criteria -</strong>
-                <strong
-                  ><span class="custom_colors"
-                    >Eligibile Branches-
+                <strong><span class="custom_colors">Eligibile Branches-
                     {{
                       jobDetails.eligibleBranches
                         ? jobDetails.eligibleBranches.join(", ")
                         : "N/A"
-                    }}</span
-                  ></strong
-                ></v-list-item-title
-              >
+                    }}</span></strong></v-list-item-title>
             </v-list-item>
 
             <v-list-item class="mb-2">
-              <v-list-item-title class="custom-ctc"
-                ><strong>Company Criteria -</strong></v-list-item-title
-              >
-              <strong
-                ><span class="custom_colors"
-                  >10th - {{ jobDetails.percentage10th }} % and above</span
-                ></strong
-              ><br />
-              <strong
-                ><span class="custom_colors"
-                  >12th - {{ jobDetails.percentage12th }} % and above</span
-                ></strong
-              ><br />
-              <strong
-                ><span class="custom_colors"
-                  >CGPA - {{ jobDetails.cgpa }} (No active backlog)</span
-                ></strong
-              ><br />
-              <strong
-                ><span class="custom_colors"
-                  >ELQ Score - {{ jobDetails.elqScore }} % and above</span
-                ></strong
-              ><br />
-              <strong
-                ><span class="custom_colors"
-                  >Autometa fix+pro- {{ jobDetails.automataScore }} and
-                  above</span
-                ></strong
-              >
+              <v-list-item-title class="custom-ctc"><strong>Company Criteria -</strong></v-list-item-title>
+              <strong><span class="custom_colors">10th - {{ jobDetails.percentage10th }} % and
+                  above</span></strong><br />
+              <strong><span class="custom_colors">12th - {{ jobDetails.percentage12th }} % and
+                  above</span></strong><br />
+              <strong><span class="custom_colors">CGPA - {{ jobDetails.cgpa }} (No active backlog)</span></strong><br />
+              <strong><span class="custom_colors">ELQ Score - {{ jobDetails.elqScore }} % and
+                  above</span></strong><br />
+              <strong><span class="custom_colors">Autometa fix+pro- {{ jobDetails.automataScore }} and
+                  above</span></strong>
             </v-list-item>
 
             <v-list-item class="mb-2">
-              <v-list-item-title class="custom-ctc"
-                ><strong>Selection Process -</strong></v-list-item-title
-              >
-              <strong
-                ><span class="custom_colors">{{
-                  jobDetails.selectionProcess
-                }}</span></strong
-              >
+              <v-list-item-title class="custom-ctc"><strong>Selection Process -</strong></v-list-item-title>
+              <strong><span class="custom_colors">{{
+                jobDetails.selectionProcess
+              }}</span></strong>
             </v-list-item>
             <v-list-item>
               <v-list-item-title class="custom-ctc">
                 <strong>Job Description - </strong>
-                <a
-                  :href="jobDetails.companyJdURL"
-                  download="Job_Description.pdf"
-                >
+                <a :href="jobDetails.companyJdURL" download="Job_Description.pdf">
                   <v-btn class="mt-4 bg-primary ml-4" size="x-large">
                     Download
                   </v-btn>
@@ -223,6 +159,12 @@ export default {
     this.fetchJobDetails(this.jobId);
   },
   methods: {
+    openCompanyWebsite(url) {
+      if (!url.startsWith("http")) {
+        url = "https://" + url;
+      }
+      window.open(url, "_blank");
+    },
     async fetchJobDetails(id) {
       try {
         const response = await axios.get(
