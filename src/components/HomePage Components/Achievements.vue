@@ -8,7 +8,7 @@
           <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/male1.jpg"
+              src="@/Images/img.png"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
@@ -24,7 +24,7 @@
         <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/male2.jpg"
+              src="@/Images/img.png"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
@@ -40,7 +40,7 @@
         <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/male3.jpg"
+              src="@/Images/img.png"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
@@ -55,11 +55,11 @@
         <v-card class="custom-card mx-auto" style="width: 200px; height: 250px;">
             <v-img
               class="circular-image"
-              src="@/Images/female.jpg"
+              src="@/Images/img.png"
               cover
             ></v-img>
             <v-card-subtitle class="text-white" style="font-size: 18px; font-weight: 500;">
-              Riya Sharma
+              Riyan Sharma
             </v-card-subtitle>
             <v-card-title class="text-white" style="font-size: 22px;">
               City Bank
