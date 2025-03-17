@@ -1,10 +1,7 @@
 <template>
   <v-app-bar app fixed dense height="60" color="#081E7F" dark class="navbar" elevation="0" flat>
     <v-toolbar-title>
-      <div class="d-flex align-center logo-container">
-        <v-img :src="logo" alt="Logo" max-height="50" max-width="50"></v-img>
-        <span class="white--text app-title">TNP Portal</span>
-      </div>
+        <span class="text-white app-title ml-3">ElevateHire</span>
     </v-toolbar-title>
 
     <v-spacer></v-spacer>

@@ -5,11 +5,10 @@
         <br>
 
         <v-row class="d-flex justify-space-between">
-            <v-col cols="12" sm="6" class="d-flex flex-column" align-self="center">
+            <v-col cols="12" sm="7" class="d-flex flex-column" align-self="center">
                 <v-sheet>
-                    <p class="text-secondary" style="color: rgba(8, 30, 127, 0.6) !important;">Pune Institute of
-                        Computer Technology</p>
-                    <h1 class="text-primary font-weight-bold">Training and Placement Portal</h1>
+                    <p class="text-secondary" style="color: rgba(8, 30, 127, 0.6) !important;">A Placement Portal</p>
+                    <h1 class="text-primary font-weight-bold">ElevateHire - Placement Made Easy</h1>
                     <p class="text-secondary" style="color: rgba(8, 30, 127, 0.6) !important;">Your gateway to a bright
                         future with placements in great companies</p>
                     <v-btn class="mt-4 bg-primary" size="x-large" @click="LoginorJobs">{{ token ? 'VIEW JOBS' : 'LOGIN'

@@ -318,7 +318,7 @@
                 "
               ></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
-                PICT Registration ID *
+                College Registration ID *
               </h4>
               <p class="custom_colors text-h7">
                 This is most important field as your data is linked to this
@@ -948,7 +948,7 @@
               <br />
               <h4 class="text-h7 font-weight-bold text-primary mb-1">
                 Naming of file should be
-                PICT-Registration-No_FirstNameLastName_Documents.pdf<br />eg:
+                College-Registration-No_FirstNameLastName_Documents.pdf<br />eg:
                 E2K19122868_ShubhJain_Documents.pdf
               </h4>
               <p class="custom_colors text-h7">
@@ -1024,7 +1024,7 @@
                 Upload PDF of Amcat Test Result
               </h4>
               <p class="custom_colors text-h7">
-                Naming of file should be PICT-Registration-No_FirstNameLastName_
+                Naming of file should be College-Registration-No_FirstNameLastName_
                 AMCAT_Result.pdf <br />eg:
                 E2K19122868_ShubhJain_AMCAT_Result.pdf
               </p>
@@ -1054,7 +1054,7 @@
               </h1>
               <p class="custom_colors text-h7">
                 Naming of file should be
-                PICT-Registration-No_FirstNameLastName_BE_Fee_Receipt.pdf
+                College-Registration-No_FirstNameLastName_BE_Fee_Receipt.pdf
               </p>
               <p class="custom_colors text-h7">
                 <strong

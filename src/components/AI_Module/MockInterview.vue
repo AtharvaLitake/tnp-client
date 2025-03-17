@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
 .custom-card {
-  width: 250px;
+  width: 400px;
   height: 200px;
   text-align: center;
   padding: 10px;
@@ -82,9 +82,7 @@ export default {
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.custom-card:hover {
-  transform: scale(1.1);
-}
+
 
 .image {
   width: 120px;

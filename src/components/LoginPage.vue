@@ -14,13 +14,11 @@
                 cols="12"
                 class="d-flex flex-column align-center justify-center"
               >
-                <v-img src="@/Images/pict-logo.jpg" style="width: 15%"></v-img>
-                <h1 class="text-h5 font-weight-bold text-primary my-5">
-                  TNP PORTAL
-                </h1>
-                <v-card class="text-justify pa-5" style="width: 70%">
+                <v-img src="@/Images/ElevateHire_splash.png" style="width: 24%"></v-img>
+      
+                <v-card class="text-justify pa-5 mt-3" style="width: 70%">
                   <h1 class="text-h5 font-weight-bold text-primary mb-1">
-                    Welcome Candidate
+                    Get Started With ElevateHire
                   </h1>
                   <router-link to="/register" style="text-decoration: none">
                     <p
@@ -107,17 +105,6 @@ export default {
           studentCredentials
         )
         .then((response) => {
-          toast.success("Login successful!", {
-            position: "top-center",
-            autoClose: 4000,
-            style: {
-              width: "500px",
-              height: "200px",
-              fontSize: "16px",
-              padding: "10px",
-              textAlign: "center",
-            },
-          });
           console.log("Login successful:", response.data);
           //Storing Token in Backend
           localStorage.setItem("studentAuth", response.data.token);

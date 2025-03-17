@@ -4,7 +4,7 @@
     <h1 class="text-h5 font-weight-bold text-primary mb-5">Help & Support</h1>
     <p class="text-justify text-h6" style="color: rgba(8, 30, 127, 0.6)">
       This section is designed for students to submit queries directly to the
-      Training and Placement Department, ensuring quick communication and
+      Administrator of ElevateHire, ensuring quick communication and
       efficient resolution of placement-related concerns.
     </p>
     <h1 class="text-h5 font-weight-bold text-primary my-5">Send Query</h1>
