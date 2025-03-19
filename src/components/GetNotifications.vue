@@ -42,7 +42,7 @@ export default {
                 const response = await axios.get("https://tnp-portal-backend-tpx5.onrender.com/api/v1/notices");
                 this.notifications = response.data.notices
             } catch (err) {
-                toast.error("Failed to load the jobs. Please try again later.", {
+                toast.error("Failed to load the notices. Please try again later.", {
                     position: "top-center",
                     autoClose: 4000,
                     style: {
