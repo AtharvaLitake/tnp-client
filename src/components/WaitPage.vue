@@ -8,7 +8,7 @@
                     </v-col>
                 </v-row>
                 <h1 class="text-primary mt-5">Wait till Admin validates you</h1>
-                <p class="text-secondary text-h6">Expected wait time 24 hours</p>
+                <p class="text-h6" style="color: rgba(8, 30, 127, 0.6) !important;">Expected wait time 24 hours</p>
                 <v-btn class="mt-4 bg-primary" size="x-large" to="/">Home Page</v-btn>
             </v-col>
         </v-row>
