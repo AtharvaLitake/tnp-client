@@ -77,6 +77,7 @@ export default {
           this.$router.push("/login")
         } catch (error) {
           localStorage.removeItem("studentAuth");
+          this.$router.push("/login")
           console.error("Error uploading:", error);
         }
       }
