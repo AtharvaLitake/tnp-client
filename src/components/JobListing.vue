@@ -6,28 +6,12 @@
     </div>
     <v-row class="mb-2 mt-2" v-if="!loading">
       <v-col cols="9">
-        <v-text-field 
-          v-model="searchQuery" 
-          class="text-primary"
-          color="primary"
-          append-inner-icon="mdi-magnify"
-          label="Search by company or role" 
-          variant="outlined" 
-          dense 
-          clearable
-        ></v-text-field>
+        <v-text-field v-model="searchQuery" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
+          label="Search by company or role" variant="outlined" dense clearable></v-text-field>
       </v-col>
       <v-col cols="3">
-        <v-text-field 
-          v-model.number="minCTC"
-          class="text-primary"
-          color="primary" 
-          label="Min CTC (LPA)" 
-          variant="outlined" 
-          dense 
-          clearable
-          type="number"
-        ></v-text-field>
+        <v-text-field v-model.number="minCTC" class="text-primary" color="primary" label="Min CTC (LPA)"
+          variant="outlined" dense clearable type="number"></v-text-field>
       </v-col>
     </v-row>
 
@@ -112,22 +96,25 @@ export default {
     async fetchjobs() {
       try {
         const response = await axios.get("https://tnp-portal-backend-tpx5.onrender.com/api/v1/jobs/active");
-        this.joblists = response.data.jobs.map(job => ({
-          ...job,
-          formatDate: job.applicationDeadline ? dayjs(job.applicationDeadline).format("DD/MM/YYYY") : null
-        }));
+        this.joblists = response.data.jobs
+          .map(job => ({
+            ...job,
+            formatDate: job.applicationDeadline ? dayjs(job.applicationDeadline).format("DD/MM/YYYY") : null
+          }))
+          .sort((a, b) => new Date(a.applicationDeadline) - new Date(b.applicationDeadline)); // Sorting by deadline
+
       } catch (err) {
         toast.error("Failed to load the jobs. Please try again later.", {
-            position: "top-center",
-            autoClose: 4000,
-            style: {
-              width: "500px",
-              height: "200px",
-              fontSize: "16px",
-              padding: "10px",
-              textAlign: "center",
-            },
-          });
+          position: "top-center",
+          autoClose: 4000,
+          style: {
+            width: "500px",
+            height: "200px",
+            fontSize: "16px",
+            padding: "10px",
+            textAlign: "center",
+          },
+        });
         console.error(err);
       } finally {
         this.loading = false;
@@ -144,6 +131,7 @@ export default {
 .custom_colors {
   color: rgba(8, 30, 127, 0.6);
 }
+
 .custom_loader {
   height: 90vh;
 }
