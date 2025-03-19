@@ -6,11 +6,7 @@
       <div v-if="!loader">
         <v-row class="d-flex mb-5 mt-2" no-gutters>
           <v-col cols="2">
-            <v-img
-              class="circular-image"
-              src="@/Images/Profile-Picture.svg"
-              width="130"
-            ></v-img>
+            <v-img class="circular-image" src="@/Images/Profile-Picture.svg" width="130"></v-img>
           </v-col>
           <v-col cols="9">
             <h1 class="text-h5 font-weight-bold text-primary mb-2">
@@ -109,17 +105,16 @@
           <v-col cols="6">
             <p class="text-body-1 font-weight-regular text-primary mb-2">
               10th Percentage -
-              <span class="custom-style"
-                >{{ studentDetails.percentage10th }}%</span
-              >
+              <span class="custom-style">{{ studentDetails.percentage10th }}%</span>
             </p>
           </v-col>
           <v-col cols="6">
             <p class="text-body-1 font-weight-regular text-primary mb-2 ml-10">
-              Diploma/12th Percentage -
-              <span class="custom-style"
-                >{{ studentDetails.percentage12th }}%</span
-              >
+              {{ studentDetails.percentage12th !== -1 ? "12th Percentage" : "Diploma Percentage" }} -
+              <span class="custom-style">
+                {{ studentDetails.percentage12th !== -1 ? studentDetails.percentage12th :
+                  studentDetails.percentageDiploma }}%
+              </span>
             </p>
           </v-col>
         </v-row>
@@ -144,10 +139,7 @@
         </v-row>
       </div>
 
-      <h1
-        class="text-h5 font-weight-bold text-primary mb-2 mt-1"
-        v-if="!loader"
-      >
+      <h1 class="text-h5 font-weight-bold text-primary mb-2 mt-1" v-if="!loader">
         SGPA Improvement Graph
       </h1>
       <div id="lineGraph" style="height: 300px"></div>
@@ -185,6 +177,7 @@ export default {
           "https://tnp-portal-backend-tpx5.onrender.com/api/v1/students/me/profile"
         );
         this.studentDetails = response.data.student;
+        console.log(this.studentDetails)
         this.studentDetails.dateOfBirth = dayjs(
           this.studentDetails.dateOfBirth
         ).format("YYYY-MM-DD");
@@ -207,16 +200,31 @@ export default {
       }
     },
     rendergraph() {
-      const graph = {
-        x: [1, 2, 3, 4, 5, 6],
-        y: [
+      let xaxis = []
+      let yaxis = []
+      if (this.studentDetails.sgpaFeSem1 == -1) {
+        xaxis = [3, 4, 5, 6]
+        yaxis = [
+          this.studentDetails.sgpaSeSem1,
+          this.studentDetails.sgpaSeSem2,
+          this.studentDetails.sgpaTeSem1,
+          this.studentDetails.sgpaTeSem2,
+        ]
+      }
+      else {
+        xaxis = [1, 2, 3, 4, 5, 6]
+        yaxis = [
           this.studentDetails.sgpaFeSem1,
           this.studentDetails.sgpaFeSem2,
           this.studentDetails.sgpaSeSem1,
           this.studentDetails.sgpaSeSem2,
           this.studentDetails.sgpaTeSem1,
           this.studentDetails.sgpaTeSem2,
-        ],
+        ]
+      }
+      const graph = {
+        x: xaxis,
+        y: yaxis,
         type: "scatter",
         mode: "lines+markers",
         marker: { color: "#081e7f" },
