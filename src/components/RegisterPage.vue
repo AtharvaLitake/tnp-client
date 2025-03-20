@@ -10,7 +10,7 @@
       to get details for registering.
     </p>
     <v-form ref="form" @submit.prevent="getdetails">
-      <v-row class="mt-2">
+      <v-row class="mt-4">
         <v-col cols="5">
           <v-text-field v-model="erp_reg" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
             label="Enter by Registration Number" variant="outlined" dense clearable></v-text-field>
@@ -64,8 +64,7 @@
               </h4>
               <v-text-field v-model="formData.full_name" class="custom_textfield" placeholder="Enter your full name"
                 variant="underlined" color="primary" :rules="[(v) => (v && v.trim() !== '') || 'Name is required']"
-                required></v-text-field>
-
+                required :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Enter the Primary Email ID
               </h4>
@@ -136,9 +135,9 @@
               </p>
               <v-text-field v-model="formData.date_of_birth" class="custom_textfield" placeholder="DD / MM/ YYYY"
                 variant="underlined" color="primary" type="date" :rules="[(v) => !!v || 'Date of Birth is required']"
-                required></v-text-field>
+                required :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">Gender</h4>
-              <v-radio-group v-model="formData.gender" :rules="[(v) => !!v || 'Gender is required']" required>
+              <v-radio-group v-model="formData.gender" :readonly="isreadonly" :rules="[(v) => !!v || 'Gender is required']" required>
                 <v-radio label="Male" class="custom_colors text-h7" value="Male"></v-radio>
                 <v-radio label="Female" class="custom_colors text-h7" value="Female"></v-radio>
                 <v-radio label="Other" class="custom_colors text-h7" value="Other"></v-radio></v-radio-group>
@@ -163,13 +162,13 @@
               </h4>
               <v-text-field v-model="formData.city" class="custom_textfield" placeholder="Enter city"
                 variant="underlined" color="primary" :rules="[(v) => !!v || 'City is required']"
-                required></v-text-field>
+                required :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 State of Permanent Residence
               </h4>
               <v-text-field v-model="formData.state" class="custom_textfield" placeholder="Enter state"
                 variant="underlined" color="primary" :rules="[(v) => !!v || 'State is required']"
-                required></v-text-field>
+                required :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Enter Permanent Address
               </h4>
@@ -178,7 +177,7 @@
               </p>
               <v-text-field v-model="formData.permanent_address" class="custom_textfield" placeholder="Enter here"
                 variant="underlined" color="primary" :rules="[(v) => !!v || 'Permanent Address is required']"
-                required></v-text-field>
+                required :readonly="isreadonly"></v-text-field>
             </v-card>
           </v-col>
         </v-row>
@@ -187,7 +186,7 @@
           <v-col cols="12">
             <v-card class="text-justify pa-5">
               <h4 class="text-h7 font-weight-bold text-primary">Branch</h4>
-              <v-radio-group v-model="formData.branch" :rules="[(v) => !!v || 'Branch is required']">
+              <v-radio-group v-model="formData.branch" :readonly="isreadonly" :rules="[(v) => !!v || 'Branch is required']">
                 <v-radio label="Computer Engineering" class="custom_colors text-h7" value="CE"></v-radio>
                 <v-radio label="Information Technology" class="custom_colors text-h7" value="IT"></v-radio>
                 <v-radio label="E & TC" class="custom_colors text-h7" value="ENTC"></v-radio></v-radio-group>
@@ -216,7 +215,7 @@
                 ]" @input="
                   formData.university_prn =
                   formData.university_prn.toUpperCase()
-                  "></v-text-field>
+                  " :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 College Registration ID *
               </h4>
@@ -230,7 +229,7 @@
                 :rules="[(v) => !!v || 'This is required field']" @input="
                   formData.pict_registration_id =
                   formData.pict_registration_id.toUpperCase()
-                  "></v-text-field>
+                  " :readonly="isreadonly"></v-text-field>
             </v-card>
           </v-col>
           <v-col cols="12">
@@ -240,11 +239,11 @@
               </h4>
               <v-text-field v-model="formData.percentage_10th" type="number" class="custom_textfield"
                 placeholder="ex- 91.01" variant="underlined" color="primary"
-                :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Board of education
               </h4>
-              <v-radio-group v-model="formData.board_10th" :rules="[(v) => !!v || 'This is required field']">
+              <v-radio-group v-model="formData.board_10th" :readonly="isreadonly" :rules="[(v) => !!v || 'This is required field']">
                 <v-radio label="SSC" class="custom_colors text-h7" value="SSC"></v-radio>
                 <v-radio label="CBSE" class="custom_colors text-h7" value="CBSE"></v-radio>
                 <v-radio label="ICSE" class="custom_colors text-h7" value="ICSE"></v-radio>
@@ -254,7 +253,7 @@
                 Year of passing 10 th
               </h4>
               <v-text-field v-model="formData.passing_year_10th" class="custom_textfield" placeholder="ex: 2019"
-                variant="underlined" color="primary" :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                variant="underlined" color="primary" :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Education Gap after 10th
               </h4>
@@ -264,7 +263,7 @@
               </p>
               <v-text-field v-model="formData.no_of_gap_years_after_10th" type="number" class="custom_textfield"
                 placeholder="Enter here" variant="underlined" color="primary"
-                :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Reason of Gap
               </h4>
@@ -273,12 +272,12 @@
               </p>
               <v-text-field v-model="formData.reason_of_gap_after_10th" class="custom_textfield"
                 placeholder="Enter here" variant="underlined" color="primary"
-                :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Have you appeared 12th or Diploma ?
               </h4>
               <v-radio-group v-model="formData.after_10th_appeared_for"
-                :rules="[(v) => !!v || 'This is required field']">
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly">
                 <v-radio label="12th" class="custom_colors text-h7" value="12th"></v-radio>
                 <v-radio label="Diploma" class="custom_colors text-h7" value="Diploma"></v-radio></v-radio-group>
             </v-card>
@@ -291,14 +290,14 @@
               </h4>
               <p class="custom_colors text-h7">Diploma students enter -1 here.</p>
               <v-text-field v-model="formData.percentage_12th" class="custom_textfield" placeholder="ex- 80.01"
-                variant="underlined" color="primary"></v-text-field>
+                variant="underlined" color="primary" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Board of education of 12th
               </h4>
               <p class="custom_colors text-h7">
                 Diploma students select None here.
               </p>
-              <v-radio-group v-model="formData.board_12th">
+              <v-radio-group v-model="formData.board_12th" :readonly="isreadonly">
                 <v-radio label="HSC" class="custom_colors text-h7" value="SSC"></v-radio>
                 <v-radio label="CBSE" class="custom_colors text-h7" value="CBSE"></v-radio>
                 <v-radio label="Other" class="custom_colors text-h7" value="Other"></v-radio>
@@ -310,7 +309,7 @@
                 Diploma students enter -1 here.
               </p>
               <v-text-field v-model="formData.passing_year_12th" type="number" class="custom_textfield"
-                placeholder="ex: 2019" variant="underlined" color="primary"></v-text-field>
+                placeholder="ex: 2019" variant="underlined" color="primary" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 Education Gap after 12th
               </h4>
@@ -319,14 +318,14 @@
               </p>
               <v-text-field v-model="formData.no_of_gap_years_after_12th" type="number" class="custom_textfield"
                 placeholder="Enter here" variant="underlined" color="primary"></v-text-field>
-              <h4 class="text-h7 font-weight-bold text-primary">
+              <h4 class="text-h7 font-weight-bold text-primary" :readonly="isreadonly">
                 Reason of Gap
               </h4>
               <p class="custom_colors text-h7">
                 Put N/A (without quotes) if you don't have a gap
               </p>
               <v-text-field v-model="formData.reason_of_gap_after_12th" class="custom_textfield"
-                placeholder="Enter here" variant="underlined" color="primary"></v-text-field>
+                placeholder="Enter here" variant="underlined" color="primary" :readonly="isreadonly"></v-text-field>
             </v-card>
           </v-col>
 
@@ -340,7 +339,7 @@
               </p>
               <v-text-field v-model="formData.percentage_diploma" type="number" class="custom_textfield"
                 placeholder="ex- 80.01" variant="underlined" color="primary"></v-text-field>
-              <h4 class="text-h7 font-weight-bold text-primary">
+              <h4 class="text-h7 font-weight-bold text-primary" :readonly="isreadonly">
                 University of Diploma
               </h4>
               <p class="custom_colors text-h7">
@@ -348,7 +347,7 @@
               </p>
               <v-text-field v-model="formData.university_of_diploma" class="custom_textfield" placeholder="ex: GPP"
                 variant="underlined" color="primary"></v-text-field>
-              <h4 class="text-h7 font-weight-bold text-primary">
+              <h4 class="text-h7 font-weight-bold text-primary" :readonly="isreadonly">
                 Year of passing Diploma
               </h4>
               <p class="custom_colors text-h7">
@@ -356,7 +355,7 @@
               </p>
               <v-text-field v-model="formData.passing_year_diploma" type="number" class="custom_textfield"
                 placeholder="ex: 2019" variant="underlined" color="primary"></v-text-field>
-              <h4 class="text-h7 font-weight-bold text-primary">
+              <h4 class="text-h7 font-weight-bold text-primary" :readonly="isreadonly">
                 Education Gap after Diploma
               </h4>
               <p class="custom_colors text-h7">
@@ -364,7 +363,7 @@
               </p>
               <v-text-field v-model="formData.no_of_gap_years_after_diploma" type="number" class="custom_textfield"
                 placeholder="Enter here" variant="underlined" color="primary"></v-text-field>
-              <h4 class="text-h7 font-weight-bold text-primary">
+              <h4 class="text-h7 font-weight-bold text-primary" :readonly="isreadonly">
                 Reason of Gap
               </h4>
               <p class="custom_colors text-h7">
@@ -386,7 +385,7 @@
               </p>
               <v-text-field v-model="formData.percentile_cet" type="number" class="custom_textfield"
                 placeholder="enter here" variant="underlined" color="primary"
-                :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 JEE Mains Percentile
               </h4>
@@ -396,7 +395,7 @@
               </p>
               <v-text-field v-model="formData.percentile_jee" type="number" class="custom_textfield"
                 placeholder="enter here" variant="underlined" color="primary"
-                :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
             </v-card>
           </v-col>
         </v-row>
@@ -418,7 +417,7 @@
               </p>
               <v-text-field v-model="formData.college_started_year" type="number" class="custom_textfield"
                 placeholder="ex: 2022" variant="underlined" color="primary"
-                :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
             </v-card>
           </v-col>
 
@@ -543,7 +542,7 @@
                   (v) =>
                     /^\d{12}$/.test(v) ||
                     'Enter a valid 12-digit aadhar number',
-                ]"></v-text-field>
+                ]" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary mb-1">
                 PAN Number *
               </h4>
@@ -554,7 +553,7 @@
               </p>
               <v-text-field v-model="formData.pan_number" class="custom_textfield" placeholder="enter here"
                 variant="underlined" color="primary" :rules="[(v) => !!v || 'This is required field']"
-                @input="formData.pan_number = formData.pan_number.toUpperCase()"></v-text-field>
+                @input="formData.pan_number = formData.pan_number.toUpperCase()" :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary mb-1">
                 Passport Number *
               </h4>
@@ -567,13 +566,13 @@
                 variant="underlined" color="primary" :rules="[(v) => !!v || 'This is required field']" @input="
                   formData.passport_number =
                   formData.passport_number.toUpperCase()
-                  "></v-text-field>
+                  " :readonly="isreadonly"></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary mb-1">
                 Citizenship *
               </h4>
               <p class="custom_colors text-h7">Ex- Indian</p>
               <v-text-field v-model="formData.citizenship" class="custom_textfield" placeholder="enter here"
-                variant="underlined" color="primary" :rules="[(v) => !!v || 'This is required field']"></v-text-field>
+                variant="underlined" color="primary" :rules="[(v) => !!v || 'This is required field']" :readonly="isreadonly"></v-text-field>
             </v-card>
           </v-col>
         </v-row>
@@ -754,6 +753,7 @@ export default {
       show1: false,
       erp_reg: "",
       erp_password: "",
+      isreadonly:false,
       formData: {
         full_name: "",
         primary_email: "",
@@ -904,6 +904,7 @@ export default {
           this.formData.university_of_diploma = user.universityOfDiploma;
           this.formData.university_prn = user.universityPRN;
           this.loader = false;
+          this.isreadonly=true
         })
         .catch((error) => {
           toast.error(
