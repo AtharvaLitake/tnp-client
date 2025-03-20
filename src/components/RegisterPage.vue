@@ -2,18 +2,33 @@
 <template>
   <nav-bar></nav-bar>
   <v-container class="px-15 mt-15">
-    <v-row class="mt-2">
-      <v-col cols="9">
-        <v-text-field v-model="search_reg" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
-          label="Get Student Details by Registration Number" variant="outlined" dense clearable></v-text-field>
-      </v-col>
-      <v-col cols="3">
-        <v-btn class="bg-primary" size="x-large" @click="getdetails()" block :loading="loader">
-          Get Details
-        </v-btn>
-      </v-col>
-    </v-row>
-    <v-form ref="form" @submit.prevent="submitForm">
+    <h1 class="text-h5 font-weight-bold text-primary mb-5">
+      Get Details Through ERP
+    </h1>
+    <p class="text-justify text-h6" style="color: rgba(8, 30, 127, 0.6)">
+      This is the registration form to register for placement drive. Fill in your Registration Number and ERP password
+      to get details for registering.
+    </p>
+    <v-form ref="form" @submit.prevent="getdetails">
+      <v-row class="mt-2">
+        <v-col cols="5">
+          <v-text-field v-model="search_reg" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
+            label="Enter by Registration Number" variant="outlined" dense clearable></v-text-field>
+        </v-col>
+        <v-col cols="4">
+          <v-text-field v-model="student_password" label="Password" :type="show1 ? 'text' : 'password'"
+            placeholder="Enter your password" :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" variant="outlined"
+            color="primary" style="color: rgba(8, 30, 127)" @click:append-inner="show1 = !show1"></v-text-field>
+        </v-col>
+        <v-col cols="3">
+          <v-btn class="bg-primary" size="x-large" type="submit" block :loading="loader">
+            Get Details
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-form>
+    <div v-if="showform">
+      <v-form ref="form" @submit.prevent="submitForm">
         <!-- Page 1: Student's Personal Info -->
         <v-row justify="center" v-if="page === 1">
           <v-col cols="12">
@@ -199,9 +214,9 @@
                     /^[A-Z0-9]{9}$/.test(v) ||
                     'PRN must be exactly 9 characters',
                 ]" @input="
-                  formData.university_prn =
-                  formData.university_prn.toUpperCase()
-                  "></v-text-field>
+                formData.university_prn =
+                formData.university_prn.toUpperCase()
+                "></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 College Registration ID *
               </h4>
@@ -694,25 +709,26 @@
               </v-btn></v-col>
           </v-row>
         </v-row>
-    </v-form>
-    <v-pagination v-model="page" :length="4" :total-visible="4" active-color="primary"
-      @update:model-value="preventJump"></v-pagination>
+      </v-form>
+      <v-pagination v-model="page" :length="4" :total-visible="4" active-color="primary"
+        @update:model-value="preventJump"></v-pagination>
 
-    <v-row class="mt-4 justify-center">
-      <!-- Previous Button -->
-      <v-col cols="auto">
-        <v-btn class="bg-primary" size="large" @click="prevPage" :disabled="page === 1">
-          Previous
-        </v-btn>
-      </v-col>
+      <v-row class="mt-4 justify-center">
+        <!-- Previous Button -->
+        <v-col cols="auto">
+          <v-btn class="bg-primary" size="large" @click="prevPage" :disabled="page === 1">
+            Previous
+          </v-btn>
+        </v-col>
 
-      <!-- Next Button -->
-      <v-col cols="auto">
-        <v-btn class="bg-primary" size="large" @click="validateAndNextPage" :disabled="page === 4">
-          Next
-        </v-btn>
-      </v-col>
-    </v-row>
+        <!-- Next Button -->
+        <v-col cols="auto">
+          <v-btn class="bg-primary" size="large" @click="validateAndNextPage" :disabled="page === 4">
+            Next
+          </v-btn>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
@@ -732,8 +748,10 @@ export default {
       loader: false,
       showPopup: false,
       show2: false,
+      showform: false,
       page: 1,
       search_reg: "",
+      show1: false,
       formData: {
         full_name: "",
         primary_email: "",
@@ -821,8 +839,8 @@ export default {
     prevPage() {
       if (this.page > 1) this.page--;
     },
-    async getdetails() {
-
+    getdetails() {
+      this.showform = true
     },
     async submitForm() {
       this.loader = true;
