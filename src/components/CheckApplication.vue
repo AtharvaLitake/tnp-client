@@ -40,15 +40,14 @@
       <v-col cols="4" class="d-flex flex-column justify-center align-center">
         <!--<v-btn class="mb-2" variant="outlined" size="x-large" color="primary" :to="`jobdetails/${application.id}`">Applied</v-btn>-->
         <v-btn
-  class="mb-2"
-  variant="outlined"
-  size="x-large"
-  color="primary"
-  :to="`jobdetails/${application.id}`"
->
-  {{ getButtonText(application) }}
-</v-btn>
-
+          class="mb-2"
+          variant="outlined"
+          size="x-large"
+          color="primary"
+          :to="`jobdetails/${application.id}`"
+        >
+          {{ getButtonText(application) }}
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -90,10 +89,10 @@ export default {
       }
     },
     getButtonText(application) {
-    if (application.isPlaced) return "Placed";
-    if (application.isShortlisted) return "Shortlisted";
-    return "Applied";
-  }
+      if (application.isPlaced) return "Placed";
+      if (application.isShortlisted) return "Shortlisted";
+      return "Applied";
+    },
   },
 };
 </script>
