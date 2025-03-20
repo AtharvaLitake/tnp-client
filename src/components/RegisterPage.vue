@@ -2,7 +2,7 @@
 <template>
   <nav-bar></nav-bar>
   <v-container class="px-15 mt-15">
-    <h1 class="text-h5 font-weight-bold text-primary mb-5">
+    <h1 class="text-h5 font-weight-bold text-primary mb-5 mt-3">
       Get Details Through ERP
     </h1>
     <p class="text-justify text-h6" style="color: rgba(8, 30, 127, 0.6)">
@@ -12,11 +12,11 @@
     <v-form ref="form" @submit.prevent="getdetails">
       <v-row class="mt-2">
         <v-col cols="5">
-          <v-text-field v-model="search_reg" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
+          <v-text-field v-model="erp_reg" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
             label="Enter by Registration Number" variant="outlined" dense clearable></v-text-field>
         </v-col>
         <v-col cols="4">
-          <v-text-field v-model="student_password" label="Password" :type="show1 ? 'text' : 'password'"
+          <v-text-field v-model="erp_password" label="Password" :type="show1 ? 'text' : 'password'"
             placeholder="Enter your password" :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" variant="outlined"
             color="primary" style="color: rgba(8, 30, 127)" @click:append-inner="show1 = !show1"></v-text-field>
         </v-col>
@@ -214,9 +214,9 @@
                     /^[A-Z0-9]{9}$/.test(v) ||
                     'PRN must be exactly 9 characters',
                 ]" @input="
-                formData.university_prn =
-                formData.university_prn.toUpperCase()
-                "></v-text-field>
+                  formData.university_prn =
+                  formData.university_prn.toUpperCase()
+                  "></v-text-field>
               <h4 class="text-h7 font-weight-bold text-primary">
                 College Registration ID *
               </h4>
@@ -752,6 +752,8 @@ export default {
       page: 1,
       search_reg: "",
       show1: false,
+      erp_reg: "",
+      erp_password: "",
       formData: {
         full_name: "",
         primary_email: "",
@@ -839,8 +841,50 @@ export default {
     prevPage() {
       if (this.page > 1) this.page--;
     },
-    getdetails() {
-      this.showform = true
+    async getdetails() {
+      this.loader = true;
+      const obj = {
+        description: this.query,
+      };
+      axios
+        .post(
+          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/queries",
+          obj
+        )
+        .then((response) => {
+          this.showform = true
+          toast.success("Student Details Filled, please fill other Fields!", {
+            position: "top-center",
+            autoClose: 4000,
+            style: {
+              width: "500px",
+              height: "200px",
+              fontSize: "16px",
+              padding: "10px",
+              textAlign: "center",
+            },
+          });
+          console.log(response.data);
+          this.loader = false;
+        })
+        .catch((error) => {
+          toast.error(
+            "Your request could not be sent. Please try again later.",
+            {
+              position: "top-center",
+              autoClose: 4000,
+              style: {
+                width: "500px",
+                height: "200px",
+                fontSize: "16px",
+                padding: "10px",
+                textAlign: "center",
+              },
+            }
+          );
+          console.error(error);
+          this.loader = false;
+        });
     },
     async submitForm() {
       this.loader = true;
