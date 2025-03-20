@@ -844,11 +844,12 @@ export default {
     async getdetails() {
       this.loader = true;
       const obj = {
-        description: this.query,
+        pictRegistrationId: this.erp_reg,
+        password: this.erp_password,
       };
       axios
         .post(
-          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/queries",
+          "https://tnp-portal-backend-tpx5.onrender.com/api/v1/users/login-and-get-user",
           obj
         )
         .then((response) => {
@@ -864,7 +865,44 @@ export default {
               textAlign: "center",
             },
           });
-          console.log(response.data);
+          this.erp_reg = '';
+          this.erp_password = '';
+          const user = response.data.user
+          console.log(user)
+          this.formData.full_name = user.fullName;
+          this.formData.aadhar_number = user.aadharNumber;
+          this.formData.after_10th_appeared_for = user.after10thAppearedFor;
+          this.formData.board_10th = user.board10th;
+          this.formData.board_12th = user.board12th;
+          this.formData.branch = user.branch;
+          this.formData.citizenship = user.citizenship;
+          this.formData.city = user.city;
+          this.formData.college_started_year = user.collegeStartedYear;
+          this.formData.date_of_birth = user.dateOfBirth ? new Date(user.dateOfBirth).toISOString().split('T')[0] : null; 
+          this.formData.gender = user.gender;
+          this.formData.id = user.id;
+          this.formData.no_of_gap_years_after_10th = user.noOfGapYearsAfter10th;
+          this.formData.no_of_gap_years_after_12th = user.noOfGapYearsAfter12th;
+          this.formData.no_of_gap_years_after_diploma = user.noOfGapYearsAfterDiploma;
+          this.formData.pan_number = user.panNumber;
+          this.formData.passing_year_10th = user.passingYear10th;
+          this.formData.passing_year_12th = user.passingYear12th;
+          this.formData.passing_year_diploma = user.passingYearDiploma;
+          this.formData.passport_number = user.passportNumber;
+          this.formData.password = user.password;
+          this.formData.percentage_10th = user.percentage10th;
+          this.formData.percentage_12th = user.percentage12th;
+          this.formData.percentage_diploma = user.percentageDiploma;
+          this.formData.percentile_cet = user.percentileCet;
+          this.formData.percentile_jee = user.percentileJee;
+          this.formData.permanent_address = user.permanentAddress;
+          this.formData.pict_registration_id = user.pictRegistrationId;
+          this.formData.reason_of_gap_after_10th = user.reasonOfGapAfter10th;
+          this.formData.reason_of_gap_after_12th = user.reasonOfGapAfter12th;
+          this.formData.reason_of_gap_after_diploma = user.reasonOfGapAfterDiploma;
+          this.formData.state = user.state;
+          this.formData.university_of_diploma = user.universityOfDiploma;
+          this.formData.university_prn = user.universityPRN;
           this.loader = false;
         })
         .catch((error) => {
