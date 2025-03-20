@@ -889,7 +889,6 @@ export default {
           this.formData.passing_year_12th = user.passingYear12th;
           this.formData.passing_year_diploma = user.passingYearDiploma;
           this.formData.passport_number = user.passportNumber;
-          this.formData.password = user.password;
           this.formData.percentage_10th = user.percentage10th;
           this.formData.percentage_12th = user.percentage12th;
           this.formData.percentage_diploma = user.percentageDiploma;
