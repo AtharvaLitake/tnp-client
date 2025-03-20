@@ -40,7 +40,7 @@
       <v-col cols="4" class="d-flex flex-column justify-center align-center">
         <!--<v-btn class="mb-2" variant="outlined" size="x-large" color="primary" :to="`jobdetails/${application.id}`">Applied</v-btn>-->
         <v-btn
-          class="mb-2"
+          class="mb-2 fixed-width"
           variant="outlined"
           size="x-large"
           color="primary"
@@ -101,4 +101,9 @@ export default {
 .custom_loader {
   height: 90vh;
 }
+.fixed-width {
+  width: 150px; 
+  text-align: center;
+}
+
 </style>
