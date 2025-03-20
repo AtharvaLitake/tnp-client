@@ -31,10 +31,6 @@
                     <v-row class="d-flex justify-center">
                         <v-col cols="1">
                             <v-img src="@/Images/Profile-Picture.svg"></v-img>
-                            <!-- 🎤 Mic Icon for Speech-to-Text -->
-                            <v-icon class="mt-2 cursor-pointer" size="32" color="primary" @click="toggleListening">
-                                {{ isListening ? 'mdi-microphone-off' : 'mdi-microphone' }}
-                            </v-icon>
                         </v-col>
                         <v-col cols="10">
                             <v-textarea label="Enter your Answer" rows="8" flat counter="400"
@@ -86,9 +82,7 @@ export default {
             loading: false,
             loader: false,
             isSpeaking: false,
-            isListening: false,
             recognition: null,
-            lastRecognizedIndex: 0,
         };
     },
     computed: {
@@ -101,7 +95,6 @@ export default {
     },
     created() {
         this.skillid = this.$route.params.id;
-        this.initSpeechRecognition();
     },
     mounted() {
         this.fetchQuestions();
@@ -146,45 +139,6 @@ export default {
             if ('speechSynthesis' in window) {
                 speechSynthesis.cancel();
                 this.isSpeaking = false;
-            }
-        },
-        initSpeechRecognition() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-            if (!SpeechRecognition) {
-                alert("Speech recognition is not supported in this browser.");
-                return;
-            }
-
-            this.recognition = new SpeechRecognition();
-            this.recognition.continuous = true;
-            this.recognition.interimResults = false;
-            this.recognition.lang = "en-US";
-
-            this.recognition.onresult = (event) => {
-                let newTranscript = "";
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    if (event.results[i].isFinal) {
-                        newTranscript += event.results[i][0].transcript + " ";
-                    }
-                }
-                if (newTranscript.trim()) {
-                    this.submitresponse[this.page - 1].answer = newTranscript;
-                }
-            };
-            this.recognition.onend = () => {
-                if (this.isListening) {
-                    this.recognition.start();
-                }
-            };
-        },
-        toggleListening() {
-            if (this.isListening) {
-                this.recognition.stop();
-                this.isListening = false;
-            } else {
-                this.recognition.start();
-                this.isListening = true;
             }
         },
         async fetchQuestions() {
