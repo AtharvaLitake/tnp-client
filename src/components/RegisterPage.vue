@@ -5,7 +5,7 @@
     <v-row class="mt-2">
       <v-col cols="9">
         <v-text-field v-model="search_reg" class="text-primary" color="primary" append-inner-icon="mdi-magnify"
-          label="Det Details by Registration Number" variant="outlined" dense clearable></v-text-field>
+          label="Get Student Details by Registration Number" variant="outlined" dense clearable></v-text-field>
       </v-col>
       <v-col cols="3">
         <v-btn class="bg-primary" size="x-large" @click="getdetails()" block :loading="loader">
