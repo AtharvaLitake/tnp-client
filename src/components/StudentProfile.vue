@@ -9,9 +9,18 @@
             <v-img class="circular-image" src="@/Images/Profile-Picture.svg" width="130"></v-img>
           </v-col>
           <v-col cols="9">
-            <h1 class="text-h5 font-weight-bold text-primary mb-2">
-              {{ studentDetails.fullName }}
-            </h1>
+            <v-row no-gutters>
+              <v-col cols="6">
+                <h1 class="text-h5 font-weight-bold text-primary mb-2">
+                  {{ studentDetails.fullName }}
+                </h1>
+              </v-col>
+              <v-col cols="6">
+                <h1 class="text-h5 font-weight-bold text-primary mb-2" v-if="studentDetails.placedJob !== null">
+                  Placed at: {{ company }}
+                </h1>
+              </v-col>
+            </v-row>
             <v-row class="d-flex" no-gutters>
               <v-col cols="6">
                 <p class="text-body-1 text-primary mb-2">
@@ -164,6 +173,7 @@ export default {
   data() {
     return {
       studentDetails: [],
+      company: "",
       loader: false,
       graphData: [],
       layout: {},
@@ -177,6 +187,7 @@ export default {
           "https://tnp-portal-backend-tpx5.onrender.com/api/v1/students/me/profile"
         );
         this.studentDetails = response.data.student;
+        this.company = this.studentDetails.placedJob?.companyName;
         console.log(this.studentDetails)
         this.studentDetails.dateOfBirth = dayjs(
           this.studentDetails.dateOfBirth
